@@ -21,6 +21,8 @@
 * Then install requirements.txt
     > pip install -r requirements.txt
 
+* Go to the example and copy local_settings.txt and pest in <b style="color: red">ntrca</b> and rename local_settings.txt to local_settings.py
+
 * Create database: <br>
     if your os is windows, you can use the command: <br>
     > C:\Program Files\PostgreSQL\postgres version\bin <br>
