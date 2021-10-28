@@ -1,10 +1,10 @@
 * Git clone, you can use the command: <br>
     if you want to clone the repository with https: <br>
-        git clone https://github.com/ntrca/ntrca_certificates.git <br>
+        > git clone https://github.com/ntrca/ntrca_certificates.git <br>
     if you want to clone the repository with ssh: <br> 
-        git clone git@github.com:ntrca/ntrca_certificates.git <br>
+        > git clone git@github.com:ntrca/ntrca_certificates.git <br>
     if you want to clone the repository with GitHub CIL: <br>
-        git clone gh repo clone ntrca/ntrca_certificates <br>
+        > git clone gh repo clone ntrca/ntrca_certificates <br>
 <br><br>
 * Go to the directory: <br>
     cd ntrca_certificates <br>
@@ -34,7 +34,7 @@
     if your os is windows, you can use the command:<br>
         > C:\Program Files\PostgreSQL\postgres version\bin<br>
         click the path and write:<br>
-            > cmd<br>
+            > cmd <br>
             > psql -U your user name -d your Database Name -h 127.0.0.1 -f database path\final_data.psql<br>
     if your os is linux, you can use the command:<br>
         > sudo -u postgres psql -d your Database Name -h 127.0.0.1 -f database path/final_data.psql<br>
