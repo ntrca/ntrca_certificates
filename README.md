@@ -17,6 +17,10 @@
     if your os is linux then you can use this command: <br>
     > source your venv name/bin/activate <br>
 <br><br>
+
+* Then install requirements.txt
+    > pip install -r requirements.txt
+
 * Create database: <br>
     if your os is windows, you can use the command: <br>
     > C:\Program Files\PostgreSQL\postgres version\bin <br>
