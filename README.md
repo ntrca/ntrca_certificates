@@ -21,7 +21,10 @@
 * Then install requirements.txt
     > pip install -r requirements.txt
 
-* Go to the example and copy local_settings.txt and pest in <b style="color: red">ntrca</b> and rename local_settings.txt to local_settings.py
+* Go to the example and copy local_settings.txt and pest in <span style="color: red">ntrca</span> and rename local_settings.txt to local_settings.py
+* Then Enter here your database name: 'NAME': 'your db name',
+* Then Enter here your postgres username: 'USER': 'postgres',
+* Then Enter here your postgres password: 'PASSWORD': 'your password',
 
 * Create database: <br>
     if your os is windows, you can use the command: <br>
