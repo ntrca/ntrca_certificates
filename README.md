@@ -57,6 +57,7 @@
 * Then Enter here your database name: 'NAME': 'your db name',
 * Then Enter here your postgres username: 'USER': 'postgres',
 * Then Enter here your postgres password: 'PASSWORD': 'your password',
+   and save it. <br><bt>
 * Then go to project directory and run the following command:<br>
     > python manage.py makemigrations<br>
     > python manage.py migrate<br>
