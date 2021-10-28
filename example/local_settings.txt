@@ -9,3 +9,4 @@ db = {
     'PORT': '5432',
     }
 }
+debug = False
