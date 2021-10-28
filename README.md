@@ -29,4 +29,4 @@
     if your os is windows, you can use the command:
         > C:\Program Files\PostgreSQL\postgres version\bin
 
-![alt text](https://ibb.co/ZBVng67)
+![alt text](https://i.ibb.co/Wk6bzWj/Screenshot-1.png)
