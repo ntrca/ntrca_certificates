@@ -12,7 +12,7 @@
 * Create database: <br>
     if your os is windows, you can use the command: <br>
     > C:\Program Files\PostgreSQL\postgres version\bin <br>
-    ![alt text](https://i.ibb.co/Wk6bzWj/Screenshot-1.png) <br>
+  ![alt text](https://i.ibb.co/Wk6bzWj/Screenshot-1.png) <br>
         click the path and write: <br>
             > cmd <br>
             > psql -U postgres <br>
