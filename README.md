@@ -39,4 +39,11 @@
     if your os is linux, you can use the command:
         > sudo -u postgres psql -d your Database Name -h 127.0.0.1 -f database path/final_data.psql
 
-
+* Then go to project directory and run the following command:
+    > python manage.py makemigrations
+    > python manage.py migrate
+    > python manage.py createsuperuser
+        Enter the username for the superuser: example (admin)
+        Enter the email for the superuser: example (admin@gmail.com) # Optional
+        Enter the password for the superuser: example (admin)
+    > python manage.py runserver
