@@ -4,6 +4,7 @@
 <div class="container-fluid bg-white">
     <div class="row">
         <div class="col-lg-12">
+            <h5>{{ district }}</h5>
             {% for subject_data in subject_wise_data %}
             {% with subject_data|first as subject %}
                 <strong class="mt-3">{{ subject.subject_name }} ({{ subject.subject_code }})</strong>
