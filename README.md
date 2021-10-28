@@ -1,10 +1,10 @@
-* Git clone, you can use the command:
-    if you want to clone the repository with https:
-        git clone https://github.com/ntrca/ntrca_certificates.git
-    if you want to clone the repository with ssh:
-        git clone git@github.com:ntrca/ntrca_certificates.git
-    if you want to clone the repository with GitHub CIL:
-        git clone gh repo clone ntrca/ntrca_certificates
+* Git clone, you can use the command: <br>
+    if you want to clone the repository with https: <br>
+        git clone https://github.com/ntrca/ntrca_certificates.git <br>
+    if you want to clone the repository with ssh: <br> 
+        git clone git@github.com:ntrca/ntrca_certificates.git <br>
+    if you want to clone the repository with GitHub CIL: <br>
+        git clone gh repo clone ntrca/ntrca_certificates <br>
 
 * Go to the directory:
     cd ntrca_certificates
