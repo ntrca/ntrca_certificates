@@ -21,12 +21,6 @@
 * Then install requirements.txt
     > pip install -r requirements.txt
 
-* Go to the example and copy local_settings.txt and pest in <span style="color: red">ntrca</span> and rename local_settings.txt to local_settings.py
-* Open  local_settings.py
-* Then Enter here your database name: 'NAME': 'your db name',
-* Then Enter here your postgres username: 'USER': 'postgres',
-* Then Enter here your postgres password: 'PASSWORD': 'your password',
-
 * Create database: <br>
     if your os is windows, you can use the command: <br>
     > C:\Program Files\PostgreSQL\postgres version\bin <br>
@@ -57,6 +51,12 @@
     if your os is linux, you can use the command:<br>
         > sudo -u postgres psql -d your Database Name -h 127.0.0.1 -f database path/final_data.psql<br>
 <br><br>
+
+* Go to the example and copy local_settings.txt and pest in <span style="color: red">ntrca</span> and rename local_settings.txt to local_settings.py
+* Open  local_settings.py
+* Then Enter here your database name: 'NAME': 'your db name',
+* Then Enter here your postgres username: 'USER': 'postgres',
+* Then Enter here your postgres password: 'PASSWORD': 'your password',
 * Then go to project directory and run the following command:<br>
     > python manage.py makemigrations<br>
     > python manage.py migrate<br>
