@@ -42,7 +42,7 @@
     > create database Database Name;<br>
     > grant all privileges on database Database Name to your user name;<br>
 <br><br>
-* Go to DB Directory and copy final_data.psql<br>
+* Go to DB Directory and copy final_data.psql with path<br>
     if your os is windows, you can use the command:<br>
         > C:\Program Files\PostgreSQL\postgres version\bin<br>
         click the path and write:<br>
