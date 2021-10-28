@@ -5,18 +5,18 @@
         git clone git@github.com:ntrca/ntrca_certificates.git <br>
     if you want to clone the repository with GitHub CIL: <br>
         git clone gh repo clone ntrca/ntrca_certificates <br>
-
-* Go to the directory:
-    cd ntrca_certificates
-
-* Create database:
-    if your os is windows, you can use the command:
-    > C:\Program Files\PostgreSQL\postgres version\bin
-    ![alt text](https://i.ibb.co/Wk6bzWj/Screenshot-1.png)
-        click the path and write:
-            > cmd
-            > psql -U postgres
-
+<br><br>
+* Go to the directory: <br>
+    cd ntrca_certificates <br>
+<br><br>
+* Create database: <br>
+    if your os is windows, you can use the command: <br>
+    > C:\Program Files\PostgreSQL\postgres version\bin <br>
+    ![alt text](https://i.ibb.co/Wk6bzWj/Screenshot-1.png) <br>
+        click the path and write: <br>
+            > cmd <br>
+            > psql -U postgres <br>
+<br><br>
     and then input the following command:
         > create database Database Name;
     if your os is linux, you can use the command:
