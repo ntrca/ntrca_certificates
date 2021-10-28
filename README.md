@@ -9,6 +9,14 @@
 * Go to the directory: <br>
     cd ntrca_certificates <br>
 <br><br>
+
+* Create virtual environment: <br>
+    > python -m venv your venv name <br>
+    if your os is windows, you can use the command: <br>
+    > your venv name\Scripts\activate <br>
+    if your os is linux then you can use this command: <br>
+    > source your venv name/bin/activate <br>
+<br><br>
 * Create database: <br>
     if your os is windows, you can use the command: <br>
     > C:\Program Files\PostgreSQL\postgres version\bin <br>
