@@ -1,0 +1,11 @@
+SECRET_KEY = 'h2#7#bf$zqkvcn^vzo#h)_0lppihh$pinwrwj+teyx86v_d7l%'
+db = {
+    'default': {
+    'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    'NAME': 'your db name',
+    'USER': 'postgres',
+    'PASSWORD': 'your password',
+    'HOST': 'localhost',
+    'PORT': '5432',
+    }
+}
