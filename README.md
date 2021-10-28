@@ -12,9 +12,10 @@
 * Create database:
     if your os is windows, you can use the command:
         > psql -U postgres
+    and then input the following command:
         > create database testdb;
     if your os is linux, you can use the command:
-        > psql
+        > sudo -u postgres psql
     and then input the following command:
         > create database testdb;
 
@@ -24,5 +25,6 @@
     > create database testdb;
     > grant all privileges on database testdb to testuser;
 
-
-  
+* Go to DB Directory and copy final_data.psql
+    if your os is windows, you can use the command:
+        > C:\Program Files\PostgreSQL\postgres version\bin
