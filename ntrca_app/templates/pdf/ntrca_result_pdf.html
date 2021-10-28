@@ -1,0 +1,2558 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no,
+          initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>NTRCA Result book</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <style>
+        @page {
+            size: A4 portrait;
+            margin: 50px 30px 50px 30px !important;
+        }
+
+        body {
+            font-family: Roboto, Helvetica, sans-serif;
+            color: #000;
+            font-size: 12px;
+            line-height: 1.2;
+        }
+        .row{
+            width: 700px;
+            margin: 0 auto;
+        }
+
+        td, th {
+            position: relative;
+            vertical-align: top;
+            page-break-after: avoid;
+        }
+
+        table {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        td {
+            border: 1px solid #000000;
+            display: table-cell;
+            vertical-align: middle;
+        }
+        table td {
+            margin-left: 10px !important;
+            padding: 0px;
+        }
+        table tr:hover {
+            background-color: #ddd;
+        }
+        table{
+            border-color: #ffffff !important;
+
+        }
+        tbody{
+            border: 1px solid black;
+        }
+
+        p {
+            font-size: 12px;
+        }
+
+        .keep-together {
+            page-break-inside: avoid;
+        }
+
+        .break-after {
+            page-break-after: avoid;
+        }
+        .column {
+            float: left;
+            width: 50%;
+            padding: 5px;
+        }
+
+        /* Clearfix (clear floats) */
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+    </style>
+</head>
+<body>
+<div class="row">
+    <div class="col-md-12">
+        {{ sub_201 }}
+        <table id="example" class="text-center table" style="width:100%; break-inside:avoid-page">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_201.subject_code }}) {{ sub_code_201.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_201 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%; break-inside:avoid-page">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_202.subject_code }}) {{ sub_code_202.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_202 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>  
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_203.subject_code }}) {{ sub_code_203.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_203 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_204.subject_code }}) {{ sub_code_204.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_204 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table> 
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_205.subject_code }}) {{ sub_code_205.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_205 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table> 
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_206.subject_code }}) {{ sub_code_206.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_206 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_207.subject_code }}) {{ sub_code_207.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_207 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_208.subject_code }}) {{ sub_code_208.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_208 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_209.subject_code }}) {{ sub_code_209.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_209 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_210.subject_code }}) {{ sub_code_210.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_210 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_212.subject_code }}) {{ sub_code_212.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_212 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_215.subject_code }}) {{ sub_code_215.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_215 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_216.subject_code }}) {{ sub_code_216.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_216 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_218.subject_code }}) {{ sub_code_218.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_218 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_219.subject_code }}) {{ sub_code_219.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_219 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_223.subject_code }}) {{ sub_code_223.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_223 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_213.subject_code }}) {{ sub_code_213.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_213 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_214.subject_code }}) {{ sub_code_214.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_214 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_217.subject_code }}) {{ sub_code_217.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_217 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_301.subject_code }}) {{ sub_code_301.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_301 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_302.subject_code }}) {{ sub_code_302.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_302 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_303.subject_code }}) {{ sub_code_303.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_303 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_304.subject_code }}) {{ sub_code_304.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_304 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_305.subject_code }}) {{ sub_code_305.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_305 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_306.subject_code }}) {{ sub_code_306.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_306 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_307.subject_code }}) {{ sub_code_307.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_307 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_308.subject_code }}) {{ sub_code_308.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_308 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_309.subject_code }}) {{ sub_code_309.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_309 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_310.subject_code }}) {{ sub_code_310.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_310 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_311.subject_code }}) {{ sub_code_311.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_311 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_312.subject_code }}) {{ sub_code_312.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_312 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_313.subject_code }}) {{ sub_code_313.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_313 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_325.subject_code }}) {{ sub_code_325.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_325 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_314.subject_code }}) {{ sub_code_314.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_314 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_315.subject_code }}) {{ sub_code_315.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_315 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_316.subject_code }}) {{ sub_code_316.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_316 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_317.subject_code }}) {{ sub_code_317.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_317 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_411.subject_code }}) {{ sub_code_411.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_411 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_428.subject_code }}) {{ sub_code_428.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_428 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_318.subject_code }}) {{ sub_code_318.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_318 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_319.subject_code }}) {{ sub_code_319.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_319 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_320.subject_code }}) {{ sub_code_320.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_320 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_321.subject_code }}) {{ sub_code_321.subject_name }}n</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_321 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_322.subject_code }}) {{ sub_code_322.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_322 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_323.subject_code }}) {{ sub_code_323.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_323 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_324.subject_code }}) {{ sub_code_324.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_324 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_441.subject_code }}) {{ sub_code_441.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_441 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_444.subject_code }}) {{ sub_code_444.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_444 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_401.subject_code }}) {{ sub_code_401.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_401 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_402.subject_code }}) {{ sub_code_402.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_402 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_403.subject_code }}) {{ sub_code_403.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_403 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_404.subject_code }}) {{ sub_code_404.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_404 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_405.subject_code }}) {{ sub_code_405.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_405 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_406.subject_code }}) {{ sub_code_406.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_406 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_407.subject_code }}) {{ sub_code_407.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_407 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_408.subject_code }}) {{ sub_code_408.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_408 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_409.subject_code }}) {{ sub_code_409.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_409 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_410.subject_code }}) {{ sub_code_410.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_410 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_412.subject_code }}) {{ sub_code_412.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_412 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_413.subject_code }}) {{ sub_code_413.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_413 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_414.subject_code }}) {{ sub_code_414.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_414 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_415.subject_code }}) {{ sub_code_415.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_415 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+                    Subject: ({{ sub_code_416.subject_code }}) {{ sub_code_416.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_416 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_417.subject_code }}) {{ sub_code_417.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_417 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_418.subject_code }}) {{ sub_code_418.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_418 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_420.subject_code }}) {{ sub_code_420.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_420 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_425.subject_code }}) {{ sub_code_425.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_425 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_421.subject_code }}) {{ sub_code_421.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_421 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_422.subject_code }}) {{ sub_code_422.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_422 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_423.subject_code }}) {{ sub_code_423.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_423 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_424.subject_code }}) {{ sub_code_424.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_424 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_426.subject_code }}) {{ sub_code_426.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_426 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_427.subject_code }}) {{ sub_code_427.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_427 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_429.subject_code }}) {{ sub_code_429.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_429 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_453.subject_code }}) {{ sub_code_453.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_453 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_431.subject_code }}) {{ sub_code_431.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_431 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_432.subject_code }}) {{ sub_code_432.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_432 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_434.subject_code }}) {{ sub_code_434.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_434 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_448.subject_code }}) {{ sub_code_448.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_448 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_435.subject_code }}) {{ sub_code_435.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_435 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_449.subject_code }}) {{ sub_code_449.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_449 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_419.subject_code }}) {{ sub_code_419.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_419 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_438.subject_code }}) {{ sub_code_438.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_438 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_439.subject_code }}) {{ sub_code_439.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_439 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_430.subject_code }}) {{ sub_code_430.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_430 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_451.subject_code }}) {{ sub_code_451.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_451 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_452.subject_code }}) {{ sub_code_452.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_452 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA) </br>
+                    16th Teachers’ Registraton Examinaton -2019 </br>
+                    Subject Wise Final Result </br>
+                    (School Level-II, School Level and College Level) </br> </br>
+
+                    Subject: ({{ sub_code_224.subject_code }}) {{ sub_code_224.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_224 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+</body>
+</html>

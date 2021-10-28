@@ -1,0 +1,252 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no,
+          initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>NTRCA Result book</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <style>
+        @page {
+            size: A4 portrait;
+            margin: 50px 30px 50px 30px !important;
+        }
+
+        body {
+            font-family: Roboto, Helvetica, sans-serif;
+            color: #000;
+            font-size: 12px;
+            line-height: 1.2;
+        }
+        .row{
+            width: 700px;
+            margin: 0 auto;
+        }
+
+        td, th {
+            position: relative;
+            vertical-align: top;
+            page-break-after: avoid;
+        }
+
+        table {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        td {
+            border: 1px solid #000000;
+            display: table-cell;
+            vertical-align: middle;
+        }
+        table td {
+            margin-left: 10px !important;
+            padding: 0px;
+        }
+        table tr:hover {
+            background-color: #ddd;
+        }
+        table{
+            border-color: #ffffff !important;
+
+        }
+        tbody{
+            border: 1px solid black;
+        }
+
+        p {
+            font-size: 12px;
+        }
+
+        .keep-together {
+            page-break-inside: avoid;
+        }
+
+        .break-after {
+            page-break-after: avoid;
+        }
+        .column {
+            float: left;
+            width: 50%;
+            padding: 5px;
+        }
+
+        /* Clearfix (clear floats) */
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+    </style>
+</head>
+<body>
+<div class="row">
+    <div class="col-md-12">
+        <table class="text-center table">
+            {% for obj in sub_201 %}
+            <tbody style="border: 0px solid #fff;">
+                {% if forloop.counter| %}
+                <tr>
+                    <td style="border: 0px solid #fff;">
+                        <h5>Non-government Teachers’ Registraton and Certfcaton Authority (NTRCA)</h5>
+                        <h6>16th Teachers’ Registraton Examinaton -2019<br>
+                            Subject Wise Final Result</br>
+                            (School Level-II, School Level and College Level)</h6> </br>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border: 0px solid #fff; text-align: left; font-size: 16px;">
+                        <b>Subject: ({{ sub_code_201.subject_code }}) {{ sub_code_201.subject_name }}</b>
+                    </td>
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+        <table id="example" class="text-center table">
+            <thead>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_201 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%; break-inside:avoid-page">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3">
+                    Subject: (202) Quran & Tajbid Fhikah & Arabic</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_202 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <table id="example" class="text-center table" style="width:100%" style="width:100%; break-inside:avoid-page">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3"> </br> </br>
+
+                    Subject: ({{ sub_code_426.subject_code }}) {{ sub_code_426.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_426 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%" style="width:100%; break-inside:avoid-page">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3"></br> </br>
+
+                    Subject: ({{ sub_code_427.subject_code }}) {{ sub_code_427.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_427 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%" style="width:100%; break-inside:avoid-page">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3"></br> </br>
+
+                    Subject: ({{ sub_code_429.subject_code }}) {{ sub_code_429.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_429 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table id="example" class="text-center table" style="width:100%" style="width:100%; break-inside:avoid-page">
+            <thead>
+                <tr style="border-bottom: 1px solid #000000;">
+                    <th colspan="3"> </br> </br>
+
+                    Subject: ({{ sub_code_453.subject_code }}) {{ sub_code_453.subject_name }}</br>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000000;">SL No.</th>
+                    <th style="border: 1px solid #000000;">Roll</th>
+                    <th style="border: 1px solid #000000;">Applicant's Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in sub_453 %}
+                <tr>
+                    <td>{{ forloop.counter }} </td>
+                    <td>{{ i.roll }} </td>
+                    <td>{{ i.name }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+</body>
+</html>

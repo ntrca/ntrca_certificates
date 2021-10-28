@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container-fluid bg-white">
+    <div class="row">
+        <div class="col-lg-12">
+            {% for subject_data in subject_wise_data %}
+            {% with subject_data|first as subject %}
+                <strong class="mt-3">{{ subject.subject_name }} ({{ subject.subject_code }})</strong>
+            {% endwith %}
+            <table width="100%" class="table table-bordered table-hover mt-2">
+                <thead>
+                    <tr>
+                        <th width="5%" scope="col">SL</th>
+                        <th width="15%" scope="col">Roll</th>
+                        <th width="15%" scope="col">Personal Info</th>
+                        <th width="20%" scope="col">Home Info</th>
+                        <th width="5%" scope="col">Photo</th>
+                        <th width="10%" scope="col">Education</th>
+                        <th width="10%" scope="col">Date of Birth/ Marks Obtain.</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for data in subject_data %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>{{ data.roll }}</td>
+                        <td>
+                            Name: {{ data.name }}<br>
+                            Father'S Name: {{ data.father_name }}<br>
+                            Mother'S Name: {{ data.mother_name }}<br>
+                        </td>
+                        <td>
+                            Vill/Holding: {{ data.permanent_vill }}<br>
+                            P/O: {{ data.permanent_post }}<br>
+                            P/S: {{ data.permanent_ps }}<br>
+                            Dist: {{ data.permanent_dist }}<br>
+                        </td>
+                        <td><img style="width: 100px;" src="/static/media/{{ data.invoice }}.jpg" alt=""></td>
+                        <td>Education</td>
+                        <td>
+                            {{ data.dob| date:"d- F- Y" }}<br>
+                            {{ data.written_number }}<br>
+                            {{ data.written_number }}<br>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
