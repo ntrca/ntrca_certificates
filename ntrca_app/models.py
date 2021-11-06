@@ -55,6 +55,37 @@ GENDER = (
     (3, 'Both'),
 )
 
+
+class District(models.Model):
+    name = models.CharField(max_length=200, null=True)
+
+    def __str__(self):
+        return str(self.name)
+
+class Thana(models.Model):
+    name = models.CharField(max_length=200, null=True)
+    district = models.ForeignKey(District, on_delete=models.CASCADE, null=True)
+
+    def __str__(self):
+        return str(self.name)
+
+
+class PostOffice(models.Model):
+    name = models.CharField(max_length=200, null=True)
+    thana = models.ForeignKey(Thana, on_delete=models.CASCADE, null=True)
+
+    def __str__(self):
+        return str(self.name)
+
+
+class Village(models.Model):
+    name = models.CharField(max_length=200, null=True)
+    post_office = models.ForeignKey(PostOffice, on_delete=models.CASCADE, null=True)
+
+    def __str__(self):
+        return str(self.name)
+
+
 class NTRCACirtificate(models.Model):
     invoice = models.CharField(max_length=200, null=True)
     roll = models.PositiveIntegerField(null=True)
@@ -74,10 +105,16 @@ class NTRCACirtificate(models.Model):
     nid = models.CharField(null=True, max_length=255)
     religion = models.CharField(max_length=50, null=True)
     permanent_vill = models.TextField(max_length=255, null=True)
-    permanent_dist = models.CharField(max_length=255, null=True)
-    permanent_ps = models.CharField(max_length=255, null=True)
-    permanent_post = models.CharField(max_length=255, null=True)
     written_number = models.CharField(max_length=200, null=True)
+    permanent_district = models.ForeignKey(District, on_delete=models.CASCADE,
+        null=True, related_name='permanent_district')
+    permanent_police_station = models.ForeignKey(Thana, on_delete=models.CASCADE,
+        null=True, related_name='permanent_thana')
+    permanent_post_office = models.ForeignKey(PostOffice, on_delete=models.CASCADE,
+        null=True, related_name='permanent_post')
+    viva_mark = models.IntegerField(null=True)
+    ssc_result = models.DecimalField(null=True, decimal_places=2, max_digits=5)
+    hsc_result = models.DecimalField(null=True, decimal_places=2, max_digits=5)
 
     class Meta:
         ordering = ['roll']
@@ -107,18 +144,6 @@ class PostAndSubjectCode(models.Model):
 
     def __str__(self):
         return str(self.subject_name)
-
-
-# class TotalStudentWritten(models.Model):
-#     roll = models.PositiveIntegerField(null=True)
-#     subject_code = models.IntegerField(blank=True, null=True)
-#     score = models.IntegerField(null=True, blank=True)
-
-#     class Meta:
-#         db_table = "total_student_written"
-
-#     def __str__(self):
-#         return str(self.roll)
 
 
 class StudentValidData(models.Model):
