@@ -1,8 +1,10 @@
+from numpy.core.numeric import roll
+import pandas as pd
 from django.shortcuts import render, redirect, HttpResponse
 from django.views import View
 from django.core.paginator import Paginator
 
-from .models import NTRCACirtificate
+from .models import NTRCACirtificate, District, Thana, PostOffice
 
 
 def registration(number):
@@ -29,7 +31,11 @@ GENDER = (
 class NtrcaInputDistrict(View):
     def get(self, request):
         template_name = 'district_input.html'
-        return render(request, template_name)
+        all_district = District.objects.all()
+        context = {
+            'all_district': all_district,
+        }
+        return render(request, template_name, context)
     def post(self, request):
         template_name = 'district_input.html'
 
@@ -55,21 +61,33 @@ class NtrcaDistrictDistribution(View):
     def get(self, request):
         template_name = 'district_distribution.html'
         all_data = request.session.get('all_data')
-        all_datas = NTRCACirtificate.objects.filter(permanent_dist=all_data)
+        all_datas = NTRCACirtificate.objects.filter(
+            permanent_district__name=all_data
+        )
         subject_list = []
         for data in all_datas:
             if data.subject_code not in subject_list:
                 subject_list.append(data.subject_code)
         subject_list = sorted(subject_list)
-        subject_wise_data = []
+        thana_list = []
+        count_list = []
+        dict_thana = Thana.objects.filter(district__name=all_data)
         for subject in subject_list:
-            sub = NTRCACirtificate.objects.filter(
-                subject_code=subject,permanent_dist=all_data
-            )
-            subject_wise_data.append(sub)
+            for thana in dict_thana:
+                data = NTRCACirtificate.objects.filter(
+                    subject_code=subject,
+                    permanent_police_station__name=thana.name
+                ).order_by("permanent_police_station")
+                thana_list.append(data)
+                count = NTRCACirtificate.objects.filter(
+                    subject_code=subject,
+                    permanent_police_station__name=thana.name
+                ).order_by("permanent_police_station").count()
+                count_list.append(count)
         context = {
-            'subject_wise_data': subject_wise_data,
-            'district': all_data,
+            'thana_wise_data': thana_list,
+            'district': dict_thana,
+            'total': sum(count_list)
         }
         return render(request, template_name, context)
 
@@ -94,7 +112,7 @@ class NTRCACirtificateDownloadView(View):
         template_name = 'certificate.html'
         all_district = request.session.get('all_district')
         if all_district:
-            qs = NTRCACirtificate.objects.filter(permanent_dist=all_district)
+            qs = NTRCACirtificate.objects.filter(permanent_district__name=all_district)
             paginator = Paginator(qs, 100)
             page_number = request.GET.get('page')
             page_obj = paginator.get_page(page_number)
@@ -106,4 +124,35 @@ class NTRCACirtificateDownloadView(View):
 
 class NTRCACirtificateView(View):
     def get(self, request):
+        reat_data = pd.read_excel("E:/Official/ntrca_certificates/ntrca_app/excel/education.xlsx")
+        list_data = reat_data.values.tolist()
+        print(list_data)
+        count = 1
+        for data in list_data:
+            obj = NTRCACirtificate.objects.get(roll=data[0])
+            try:
+                data1 = float(data[1])
+                data2 = float(data[2])
+            except Exception as e:
+                print(e, "*" * 100)
+                data1 = data[1]
+                data2 = data[2]
+            print(type(data1), "#" * 100, type(data2), "@" * 100)
+            if type(data1) == int or type(data1) == float:
+                if data1 <= 5.00 and data1 >= 2.00:
+                    print(f"SSC Data Varified")
+                    obj.ssc_result = data1
+                else:
+                    obj.ssc_result = None
+                obj.save()
+            if type(data2) == int or type(data2) == float:
+                if data2 <= 5 and data2 >= 2:
+                    print(f"HSC Data Varified")
+                    obj.hsc_result = data2
+                    obj.save()
+                else:
+                    obj.hsc_result = None
+                obj.save()
+            print(f"Roll {obj.roll} SSC Result {obj.ssc_result} {data[1]} Hsc Result {obj.hsc_result} {data[2]} Loop {count}")
+            count += 1
         return HttpResponse("Success")

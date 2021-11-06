@@ -4,25 +4,29 @@
 <div class="container-fluid bg-white">
     <div class="row">
         <div class="col-lg-12">
-            <h5>{{ district }}</h5>
-            {% for subject_data in subject_wise_data %}
-            {% with subject_data|first as subject %}
-                <strong class="mt-3">{{ subject.subject_name }} ({{ subject.subject_code }})</strong>
+            <h4><b>Total: {{ total }}</b></h4>
+            {% for thana in thana_wise_data %}
+            {% if thana %}
+            {% with thana|first as data %}
+                <p class="mt-3">Thana: {{ data.permanent_police_station }}, Candidate: {{ thana.count }}</p>
+                <p>{{ data.subject_name }}({{ data.subject_code }})</p>
+                <p></p>
             {% endwith %}
             <table width="100%" class="table table-bordered table-hover mt-2">
                 <thead>
                     <tr>
                         <th width="5%" scope="col">SL</th>
-                        <th width="15%" scope="col">Roll</th>
+                        <th width="5%" scope="col">Roll</th>
                         <th width="15%" scope="col">Personal Info</th>
                         <th width="20%" scope="col">Home Info</th>
                         <th width="5%" scope="col">Photo</th>
                         <th width="10%" scope="col">Education</th>
                         <th width="10%" scope="col">Date of Birth/ Marks Obtain.</th>
+                        <th width="10%" scope="col">Signature.</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {% for data in subject_data %}
+                    {% for data in thana %}
                     <tr>
                         <th scope="row">{{ forloop.counter }}</th>
                         <td>{{ data.roll }}</td>
@@ -33,21 +37,26 @@
                         </td>
                         <td>
                             Vill/Holding: {{ data.permanent_vill }}<br>
-                            P/O: {{ data.permanent_post }}<br>
-                            P/S: {{ data.permanent_ps }}<br>
-                            Dist: {{ data.permanent_dist }}<br>
+                            P/O: {{ data.permanent_post_office }}<br>
+                            P/S: {{ data.permanent_police_station }}<br>
+                            Dist: {{ data.permanent_district }}<br>
                         </td>
                         <td><img style="width: 100px;" src="/static/media/{{ data.invoice }}.jpg" alt=""></td>
-                        <td>Education</td>
+                        <td>
+                            SSC Result: {{ data.ssc_result }}<br>
+                            SSC Result: {{ data.hsc_result }}
+                        </td>
                         <td>
                             {{ data.dob| date:"d- F- Y" }}<br>
-                            {{ data.written_number }}<br>
-                            {{ data.written_number }}<br>
+                            Written: {{ data.written_number }}<br>
+                            Viva: {{ data.viva_mark }}<br>
                         </td>
+                        <td></td>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
+            {% endif %}
             {% endfor %}
         </div>
     </div>
