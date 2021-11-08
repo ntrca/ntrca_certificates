@@ -2,8 +2,55 @@
 {% block content %}
 
 <div class="container-fluid bg-white">
+    <style>
+        table{
+                font-size: 12px;
+            }
+        th{
+            font-size: 11px !important;
+            padding: 3px 0 3px 2px !important;
+            font-weight: 400;
+        }
+        td{
+            font-size: 11px !important;
+            padding: 7px 0 7px 6px !important;
+        }
+        @media print {
+            .heder {page-break-after: always;}
+            @page {size: landscape}
+            table{
+                font-size: 12px;
+            }
+            footer{
+                display: none;
+            }
+            table{
+                page-break-after: always;
+            }
+        }
+        .col-lg-12 h5{
+            font-size: 15px;
+            text-align: center;
+        }
+        .col-lg-12 h6{
+            font-size: 12px;
+            text-align: center;
+        }
+        .col-lg-12 p{
+            font-size: 12px;
+        }
+        hr{
+            margin-bottom: 0px;
+        }
+    </style>
+    <div class="row">
+        <div class="col-md-8 m-auto text-center">
+            
+        </div>
+    </div>
     <div class="row">
         <div class="col-lg-12">
+<<<<<<< HEAD
             <h4><b>Total: {{ total }}</b></h4>
             {% for thana in thana_wise_data %}
             {% if thana %}
@@ -11,17 +58,37 @@
                 <p class="mt-3">Thana: {{ data.permanent_police_station }}, Candidate: {{ thana.count }}</p>
                 <p>{{ data.subject_name }}({{ data.subject_code }})</p>
                 <p></p>
+=======
+            {% for thana in thana_wise_data %}
+            {% if thana %}
+            {% with thana|first as data %}
+                <h5>Non Government Teachers' Registration and Certification Authority (NTRCA)</h5>
+                <h6>Distribution Register ( 16 th NTRCA exam )</h6>
+                <p style="font-weight: 600; text-transform: uppercase; font-size: 14px;">{{district}}</p>
+                <p>{{ data.subject_name }}({{ data.subject_code }})</p>
+>>>>>>> a11bc93e36e5fad4b749782b9287d278eb63976c
             {% endwith %}
             <table width="100%" class="table table-bordered table-hover mt-2">
                 <thead>
                     <tr>
                         <th width="5%" scope="col">SL</th>
                         <th width="5%" scope="col">Roll</th>
+<<<<<<< HEAD
                         <th width="15%" scope="col">Personal Info</th>
                         <th width="20%" scope="col">Home Info</th>
                         <th width="5%" scope="col">Photo</th>
                         <th width="10%" scope="col">Education</th>
                         <th width="10%" scope="col">Date of Birth/ Marks Obtain.</th>
+=======
+                        <th width="20%" scope="col">Name, Father's Name, Mother's Name</th>
+                        <th width="15%" scope="col">Permanent Address</th>
+                        <th width="2%" scope="col">Photo</th>
+                        <th width="18%" scope="col">Educational Qualification<br>
+                            Passing Year/Exam Name/Result</th>
+                        <th width="10%" scope="col">Date of Birth/ Marks Obtain.</th>
+                        <th>Serial No/ Registration
+                            No</th>
+>>>>>>> a11bc93e36e5fad4b749782b9287d278eb63976c
                         <th width="10%" scope="col">Signature.</th>
                     </tr>
                 </thead>
@@ -40,16 +107,32 @@
                             P/O: {{ data.permanent_post_office }}<br>
                             P/S: {{ data.permanent_police_station }}<br>
                             Dist: {{ data.permanent_district }}<br>
+<<<<<<< HEAD
                         </td>
                         <td><img style="width: 100px;" src="/static/media/{{ data.invoice }}.jpg" alt=""></td>
                         <td>
                             SSC Result: {{ data.ssc_result }}<br>
                             SSC Result: {{ data.hsc_result }}
                         </td>
+=======
+                        </td>
+                        <td><img style="width: 50px;" src="/static/media/{{ data.invoice }}.jpg" alt=""></td>
+                        <td>
+                            SSC Result: {{ data.ssc_result }}<br>
+                            HSC Result: {{ data.hsc_result }}
+                        </td>
+>>>>>>> a11bc93e36e5fad4b749782b9287d278eb63976c
                         <td>
                             {{ data.dob| date:"d- F- Y" }}<br>
                             Written: {{ data.written_number }}<br>
                             Viva: {{ data.viva_mark }}<br>
+<<<<<<< HEAD
+=======
+                        </td>
+                        <td style="padding: 0;">
+                            <hr>
+                            162019{{ data.reg }}
+>>>>>>> a11bc93e36e5fad4b749782b9287d278eb63976c
                         </td>
                         <td></td>
                     </tr>

@@ -68,26 +68,16 @@ class NtrcaDistrictDistribution(View):
         for data in all_datas:
             if data.subject_code not in subject_list:
                 subject_list.append(data.subject_code)
-        subject_list = sorted(subject_list)
-        thana_list = []
-        count_list = []
-        dict_thana = Thana.objects.filter(district__name=all_data)
-        for subject in subject_list:
-            for thana in dict_thana:
-                data = NTRCACirtificate.objects.filter(
-                    subject_code=subject,
-                    permanent_police_station__name=thana.name
-                ).order_by("permanent_police_station")
-                thana_list.append(data)
-                count = NTRCACirtificate.objects.filter(
-                    subject_code=subject,
-                    permanent_police_station__name=thana.name
-                ).order_by("permanent_police_station").count()
-                count_list.append(count)
+        dirsrict_data_list = []
+        for data in subject_list:
+            obj = NTRCACirtificate.objects.filter(
+                subject_code=data,
+                permanent_district__name=all_data
+            )
+            dirsrict_data_list.append(obj)
         context = {
-            'thana_wise_data': thana_list,
-            'district': dict_thana,
-            'total': sum(count_list)
+            'thana_wise_data': dirsrict_data_list,
+            'district': all_data
         }
         return render(request, template_name, context)
 
