@@ -3,35 +3,64 @@
 
 <div class="container-fluid bg-white">
     <style>
+        table{
+                font-size: 12px;
+            }
+        th{
+            font-size: 11px !important;
+            padding: 3px 0 3px 2px !important;
+            font-weight: 400;
+        }
+        td{
+            font-size: 11px !important;
+            padding: 7px 0 7px 6px !important;
+        }
         @media print {
             .heder {page-break-after: always;}
+            @page {size: landscape}
+            table{
+                font-size: 12px;
+            }
+            footer{
+                display: none;
+            }
+            table{
+                page-break-after: always;
+            }
+        }
+        .col-md-8 h5{
+            font-size: 15px;
+        }
+        .col-md-8 h6{
+            font-size: 12px;
+        }
+        .col-lg-12 p{
+            font-size: 12px;
         }
     </style>
     <div class="row">
-        <div class="col-md-8 m-auto text-center heder">
+        <div class="col-md-8 m-auto text-center">
             <h5>Non Government Teachers' Registration and Certification Authority (NTRCA)</h5>
             <h6>Distribution Register ( 16 th NTRCA exam )</h6>
         </div>
     </div>
     <div class="row">
         <div class="col-lg-12">
-            <h4><b>Total: {{ total }}</b></h4>
+            <p style="font-weight: 600; text-transform: uppercase; font-size: 14px;">{{district}}</p>
             {% for thana in thana_wise_data %}
             {% if thana %}
             {% with thana|first as data %}
-                <p class="mt-3">Thana: {{ data.permanent_police_station }}, Candidate: {{ thana.count }}</p>
-                <p>{{ data.subject_name }}({{ data.subject_code }})</p>
-                <p></p>
+                <p>{{ data.subject_name }}</p>
             {% endwith %}
             <table width="100%" class="table table-bordered table-hover mt-2">
                 <thead>
                     <tr>
                         <th width="5%" scope="col">SL</th>
                         <th width="5%" scope="col">Roll</th>
-                        <th width="15%" scope="col">Name, Father's Name, Mother's Name</th>
-                        <th width="20%" scope="col">Permanent Address</th>
-                        <th width="5%" scope="col">Photo</th>
-                        <th width="10%" scope="col">Educational Qualification
+                        <th width="20%" scope="col">Name, Father's Name, Mother's Name</th>
+                        <th width="15%" scope="col">Permanent Address</th>
+                        <th width="2%" scope="col">Photo</th>
+                        <th width="18%" scope="col">Educational Qualification<br>
                             Passing Year/Exam Name/Result</th>
                         <th width="10%" scope="col">Date of Birth/ Marks Obtain.</th>
                         <th>Serial No/ Registration
@@ -55,7 +84,7 @@
                             P/S: {{ data.permanent_police_station }}<br>
                             Dist: {{ data.permanent_district }}<br>
                         </td>
-                        <td><img style="width: 100px;" src="/static/media/{{ data.invoice }}.jpg" alt=""></td>
+                        <td><img style="width: 50px;" src="/static/media/{{ data.invoice }}.jpg" alt=""></td>
                         <td>
                             SSC Result: {{ data.ssc_result }}<br>
                             SSC Result: {{ data.hsc_result }}
@@ -66,9 +95,9 @@
                             Viva: {{ data.viva_mark }}<br>
                         </td>
                         <td style="padding: 0;">
-                            <table style="width: 100%;">
+                            <table class="nasted_table" style="width: 100%;">
                                 <tr>
-                                    <td style="border-top: 0px;"></td>
+                                    <td style="border-top: 0px; border-bottom: 0px;"></td>
                                 </tr>
                                 <tr>
                                     <td style="border-bottom: 0px; ">162019{{ data.reg }}</td>
