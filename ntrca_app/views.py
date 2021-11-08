@@ -66,12 +66,12 @@ class NtrcaDistrictDistribution(View):
         )
         subject_list = []
         for data in all_datas:
-            if data.subject_name not in subject_list:
-                subject_list.append(data.subject_name)
+            if data.subject_code not in subject_list:
+                subject_list.append(data.subject_code)
         dirsrict_data_list = []
         for data in subject_list:
             obj = NTRCACirtificate.objects.filter(
-                subject_name=data,
+                subject_code=data,
                 permanent_district__name=all_data
             )
             dirsrict_data_list.append(obj)

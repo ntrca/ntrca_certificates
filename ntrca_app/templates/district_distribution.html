@@ -50,7 +50,7 @@
             {% for thana in thana_wise_data %}
             {% if thana %}
             {% with thana|first as data %}
-                <p>{{ data.subject_name }}</p>
+                <p>{{ data.subject_name }}({{ data.subject_code }})</p>
             {% endwith %}
             <table width="100%" class="table table-bordered table-hover mt-2">
                 <thead>
@@ -87,7 +87,7 @@
                         <td><img style="width: 50px;" src="/static/media/{{ data.invoice }}.jpg" alt=""></td>
                         <td>
                             SSC Result: {{ data.ssc_result }}<br>
-                            SSC Result: {{ data.hsc_result }}
+                            HSC Result: {{ data.hsc_result }}
                         </td>
                         <td>
                             {{ data.dob| date:"d- F- Y" }}<br>
