@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import (
     NtrcaResult, NtrcaResultPdf, Subject, PostName,
-    NTRCACirtificate, PostAndSubjectCode
+    NTRCACirtificate, PostAndSubjectCode, District, Thana, PostOffice
 )
 
 class NtrcaMoelAdmin(admin.ModelAdmin):
@@ -51,3 +51,25 @@ class PostAndSubjectCodeAdmin(admin.ModelAdmin):
     ]
     list_filter = ['subject_code']
 admin.site.register(PostAndSubjectCode, PostAndSubjectCodeAdmin)
+
+
+class DistrictAdmin(admin.ModelAdmin):
+    list_display = [
+    'name'
+    ]
+admin.site.register(District, DistrictAdmin)
+
+
+class ThanaAdmin(admin.ModelAdmin):
+    list_display = [
+    'name', 'district'
+    ]
+admin.site.register(Thana, ThanaAdmin)
+
+
+class PostOfficeAdmin(admin.ModelAdmin):
+    list_display = [
+    'name', 'thana'
+    ]
+    search_fields = ['name', 'thana__name']
+admin.site.register(PostOffice, PostOfficeAdmin)
