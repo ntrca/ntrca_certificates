@@ -29,6 +29,21 @@
 </head>
 <body style="background: rgba(0, 0, 0, 0.178); font-family: 'Open Sans', sans-serif; font-size: 18px;" onLoad="noBack();" onpageshow="if (event.persisted) noBack();" onUnload="">
     {% include 'navbar.html' %}
+    
+    <div class="container pt-3">
+        <div class="row">
+            <div class="col-8 offset-2">
+                {% if messages %}
+                <ul class="messages text-center" style="list-style:none">
+                    {% for message in messages %}
+                    <li class="alert alert-warning" style="color: #000;">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
 
     {% block content %}
     {% endblock %}

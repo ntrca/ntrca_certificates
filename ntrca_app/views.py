@@ -3,6 +3,8 @@ import pandas as pd
 from django.shortcuts import render, redirect, HttpResponse
 from django.views import View
 from django.core.paginator import Paginator
+from django.contrib import messages
+from django.http import HttpResponseRedirect
 
 from .models import NTRCACirtificate, District, Thana, PostOffice
 
@@ -88,11 +90,17 @@ class NtrcaSingleData(View):
     def get(self, request):
         template_name = 'single_data.html'
         single_roll = request.session.get('single_roll')
+        
+        single_data = NTRCACirtificate.objects.none()
+
         try:
             single_data = NTRCACirtificate.objects.get(roll=single_roll)
         except Exception as e:
             print(e)
             message = "Roll Not Found"
+            messages.warning(request, f'Certificate did not found for roll {single_roll}')
+            return HttpResponseRedirect('/')
+
         context = {
             'data': single_data
         }
