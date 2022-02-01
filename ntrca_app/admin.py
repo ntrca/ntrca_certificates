@@ -28,7 +28,6 @@ class SubjectAdmin(admin.ModelAdmin):
     ]
 admin.site.register(Subject, SubjectAdmin)
 
-
 class NTRCACirtificateAdmin(admin.ModelAdmin):
     list_display = [
     'invoice','name', 'roll', 'reg', 'subject_code', 'post_code', 'subject_name',
@@ -36,6 +35,8 @@ class NTRCACirtificateAdmin(admin.ModelAdmin):
     ]
     list_filter = ['subject_code']
     search_fields = ['roll']
+
+
 admin.site.register(NTRCACirtificate, NTRCACirtificateAdmin)
 
 @admin.register(DuplicateCertificate)
