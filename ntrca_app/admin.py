@@ -1,7 +1,8 @@
 from django.contrib import admin
 from .models import (
     NtrcaResult, NtrcaResultPdf, Subject, PostName,
-    NTRCACirtificate, PostAndSubjectCode, District, Thana, PostOffice
+    NTRCACirtificate, PostAndSubjectCode, District, Thana, PostOffice,
+    DuplicateCertificate, DuplicateCertificateFile
 )
 
 class NtrcaMoelAdmin(admin.ModelAdmin):
@@ -37,6 +38,30 @@ class NTRCACirtificateAdmin(admin.ModelAdmin):
     search_fields = ['roll']
 admin.site.register(NTRCACirtificate, NTRCACirtificateAdmin)
 
+@admin.register(DuplicateCertificate)
+class DuplicateCertificateAdmin(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'ntrca_certificate',
+        'note',
+        'document',
+        'created_user',
+        'created',
+        'updated',
+    )
+    list_filter = ('ntrca_certificate', 'created_user', 'created', 'updated')
+
+
+@admin.register(DuplicateCertificateFile)
+class DuplicateCertificateFileAdmin(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'duplicate_certificate',
+        'document',
+        'created',
+        'updated',
+    )
+    list_filter = ('duplicate_certificate', 'created', 'updated')
 
 class PostNameAdmin(admin.ModelAdmin):
     list_display = [

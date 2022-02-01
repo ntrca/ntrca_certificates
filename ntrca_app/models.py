@@ -1,6 +1,8 @@
 from django.db import models
 from django.db.models.enums import Choices
 from numpy.core.numeric import roll
+from django.contrib.auth.models import User
+
 
 class NtrcaResult(models.Model):
     roll = models.PositiveIntegerField(null=True)
@@ -121,6 +123,35 @@ class NTRCACirtificate(models.Model):
 
     def __str__(self):
         return str(self.name)
+
+
+class DuplicateCertificate(models.Model):
+    """ NTRCA Duplicate Certificate Print Information"""
+    ntrca_certificate = models.ForeignKey(
+        NTRCACirtificate, on_delete=models.CASCADE,
+        related_name='duplicate_certificates'
+    )
+    note = models.TextField(help_text='Duplicate note')
+    document = models.FileField(null=True)
+    created_user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return str(self.ntrca_certificate.name)
+
+class DuplicateCertificateFile(models.Model):
+    """ Duplicate certificate files model """
+    duplicate_certificate = models.ForeignKey(
+        DuplicateCertificate, on_delete=models.CASCADE, null=True,
+        related_name='duplicate_certificate_files'
+    )
+    document = models.FileField(null=True)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return str(self.duplicate_certificate.ntrca_certificate.name)
 
 
 class PostName(models.Model):

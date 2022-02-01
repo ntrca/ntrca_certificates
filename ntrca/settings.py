@@ -31,11 +31,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
-
-    # My Apps
-    'ntrca_app',
-
+    'django_extensions',
     'qr_code',
+
+    # custom apps
+    'ntrca_app',
 ]
 
 MIDDLEWARE = [
@@ -53,7 +53,7 @@ ROOT_URLCONF = 'ntrca.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -107,6 +107,7 @@ USE_TZ = True
 
 # static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
+STATIC_ROOT = "/static/"
 STATICFILES_DIRS = [
         os.path.join(BASE_DIR, 'static')
 ]
