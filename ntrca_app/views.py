@@ -29,6 +29,7 @@ GENDER = (
 
 
 class NtrcaInputDistrict(View):
+
     def get(self, request):
         template_name = 'district_input.html'
         all_district = District.objects.all()
@@ -36,6 +37,7 @@ class NtrcaInputDistrict(View):
             'all_district': all_district,
         }
         return render(request, template_name, context)
+        
     def post(self, request):
         template_name = 'district_input.html'
 

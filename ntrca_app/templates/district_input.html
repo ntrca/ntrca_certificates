@@ -9,13 +9,14 @@
               </div>
         </div>
         {% endif %}
+
         <div class="col-md-6">
             <div class="card my-5">
                 <div class="card-body">
                     <form method="POST">
                         {% csrf_token %}
                         <div class="form-group">
-                            <h5 style="font-family: 'Roboto Slab',">District wise Certificate</h5>
+                            <h5 style="font-family: 'Roboto Slab'; text-align: center;">District Wise Certificate</h5>
                             <label for="exampleInputPassword1">District</label>
                             <!-- <input type="text" class="form-control" name="district" id="district" placeholder="Please Enter District" required> -->
                             <select name="district" class="form-control js-example-basic-single" id="district">
@@ -30,13 +31,14 @@
                 </div>
             </div>
         </div>
+
         <div class="col-md-6">
             <div class="card my-5">
                 <div class="card-body">
                     <form method="POST">
                         {% csrf_token %}
                         <div class="form-group">
-                            <h5>Single Certificate</h5>
+                            <h5 style="text-align:center">Single Certificate</h5>
                             <label for="exampleInputPassword1">Roll</label>
                             <input type="number" class="form-control" name="roll" id="roll" placeholder="Please Enter Roll" required>
                         </div>
@@ -45,13 +47,14 @@
                 </div>
             </div>
         </div>
+
         <div class="col-md-12">
             <div class="card mb-5">
                 <div class="card-body">
                     <form method="POST">
                         {% csrf_token %}
                         <div class="form-group">
-                            <h5>District wise Data</h5>
+                            <h5 style="text-align:center">District Wise Data</h5>
                             <label for="exampleInputPassword1">District</label>
                             <!-- <input type="text" class="form-control" name="district_distribution" id="roll" placeholder="Please Enter District" required> -->
                             <select name="district_distribution" class="form-control js-example-basic-single" id="district_distribution">
