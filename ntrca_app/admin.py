@@ -34,6 +34,7 @@ class NTRCACirtificateAdmin(admin.ModelAdmin):
     'total_number',
     ]
     list_filter = ['subject_code']
+    search_fields = ['roll']
 admin.site.register(NTRCACirtificate, NTRCACirtificateAdmin)
 
 
