@@ -70,6 +70,7 @@ class NtrcaInputDistrict(View):
                     if form.is_valid():
                         form_obj = form.save(commit=False)
                         form_obj.ntrca_certificate = single_data
+                        # form_obj.created_user = request.user  # if have login sys
                         form_obj.save()
                         request.session['duplicate_roll'] = duplicate_roll
                         return redirect('ntrca_duplicate_certificate')

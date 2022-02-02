@@ -32,10 +32,6 @@ class DuplicateCertificateInline(admin.TabularInline):
     model = DuplicateCertificate
     extra = 0
 
-    def get_queryset(self, request):
-        qs = super(DuplicateCertificateInline, self).get_queryset(request)
-        return qs
-
 class NTRCACirtificateAdmin(admin.ModelAdmin):
     list_display = [
     'invoice','name', 'roll', 'reg', 'subject_code', 'post_code', 'subject_name',
@@ -62,6 +58,7 @@ class DuplicateCertificateAdmin(admin.ModelAdmin):
         'updated',
     )
     list_filter = ('ntrca_certificate', 'created_user', 'created', 'updated')
+    search_fields = ['ntrca_certificate__name',]
 
 
 # @admin.register(DuplicateCertificateFile)
