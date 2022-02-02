@@ -62,11 +62,17 @@
 		}
 
 		.image {
-			width: 150px;
+			position: relative;
+			width: 220px;
 			float: right;
 			text-align: right;
 			margin-top: 40px;
 
+		}
+		.image span {
+			position: absolute;
+			left: 0px;
+			top: 0px;
 		}
 
 		.image img {
@@ -218,7 +224,7 @@
 			</div>
 			<div class="image">
                 <span style="display: inline-block;padding:4px;border:1px solid #ccc;margin-bottom:10px;" title="{{ data.get_duplicate_count }}">Duplicate</span>
-				<img src="/static/media/{{ data.invoice }}.jpg" alt="img " height="120px" width="120px" />
+				<img src="/static/media/{{ data.invoice }}.jpg" alt="img " height="120px" width="120px" style="display: inline-block"/>
 			</div>
 			<div>
 				<div class="clr"></div>
