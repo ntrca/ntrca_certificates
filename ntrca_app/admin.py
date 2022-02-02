@@ -31,6 +31,7 @@ admin.site.register(Subject, SubjectAdmin)
 class DuplicateCertificateInline(admin.TabularInline):
     model = DuplicateCertificate
     extra = 0
+    readonly_fields = ['created', 'updated']
 
 class NTRCACirtificateAdmin(admin.ModelAdmin):
     list_display = [
@@ -45,32 +46,6 @@ class NTRCACirtificateAdmin(admin.ModelAdmin):
 
 
 admin.site.register(NTRCACirtificate, NTRCACirtificateAdmin)
-
-@admin.register(DuplicateCertificate)
-class DuplicateCertificateAdmin(admin.ModelAdmin):
-    list_display = (
-        'id',
-        'ntrca_certificate',
-        'note',
-        'document',
-        'created_user',
-        'created',
-        'updated',
-    )
-    list_filter = ('ntrca_certificate', 'created_user', 'created', 'updated')
-    search_fields = ['ntrca_certificate__name',]
-
-
-# @admin.register(DuplicateCertificateFile)
-# class DuplicateCertificateFileAdmin(admin.ModelAdmin):
-#     list_display = (
-#         'id',
-#         'duplicate_certificate',
-#         'document',
-#         'created',
-#         'updated',
-#     )
-#     list_filter = ('duplicate_certificate', 'created', 'updated')
 
 class PostNameAdmin(admin.ModelAdmin):
     list_display = [
