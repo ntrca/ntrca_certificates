@@ -124,6 +124,12 @@ class NTRCACirtificate(models.Model):
     def __str__(self):
         return str(self.name)
 
+    @property
+    def get_duplicate_count(self):
+        """ get certificate duplicate count """
+        qs = self.duplicate_certificates.all()
+        return len(qs)
+
 
 class DuplicateCertificate(models.Model):
     """ NTRCA Duplicate Certificate Print Information"""
@@ -132,8 +138,8 @@ class DuplicateCertificate(models.Model):
         related_name='duplicate_certificates'
     )
     note = models.TextField(help_text='Duplicate note')
-    document = models.FileField(null=True)
-    created_user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    document = models.FileField(null=True, blank=True)
+    created_user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 

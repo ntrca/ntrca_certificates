@@ -7,6 +7,7 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect
 
 from .models import NTRCACirtificate, District, Thana, PostOffice
+from .forms import DuplicateCertificateForm
 
 
 def registration(number):
@@ -35,8 +36,10 @@ class NtrcaInputDistrict(View):
     def get(self, request):
         template_name = 'district_input.html'
         all_district = District.objects.all()
+        form = DuplicateCertificateForm(request.POST or None)
         context = {
             'all_district': all_district,
+            'form': form
         }
         return render(request, template_name, context)
         
@@ -46,16 +49,36 @@ class NtrcaInputDistrict(View):
         district = request.POST.get('district')
         roll = request.POST.get('roll')
         district_distribution = request.POST.get('district_distribution')
-
-        if district:
+        duplicate_roll = request.POST.get('duplicate_roll')
+        print('input data', district, roll, district_distribution, duplicate_roll)
+      
+        if district is not None:
             request.session['all_district'] = district
             return redirect('ntrca_cirtificate_download')
-        elif roll:
+        elif roll is not None:
             request.session['single_roll'] = roll
             return redirect('ntrca_single_data')
-        elif district_distribution:
+        elif district_distribution is not None:
             request.session['all_data'] = district_distribution
             return redirect('ntrca_district_distribution')
+        elif duplicate_roll is not None:
+            # duplicate_roll section
+            try:
+                single_data = NTRCACirtificate.objects.get(roll=duplicate_roll)
+                if single_data:
+                    form = DuplicateCertificateForm(request.POST or None)
+                    if form.is_valid():
+                        form_obj = form.save(commit=False)
+                        form_obj.ntrca_certificate = single_data
+                        form_obj.save()
+                        request.session['duplicate_roll'] = duplicate_roll
+                        return redirect('ntrca_duplicate_certificate')
+                    else:
+                        messages.warning(request, 'Please fill up all required field.')
+                        return redirect('ntrca_district')
+            except Exception as e:
+                messages.warning(request, f'Certificate did not found for roll {duplicate_roll}')
+                return redirect('ntrca_district')
         else:
             message = "Data Not Match"
             return render(request, template_name, {'message': message})
@@ -111,6 +134,7 @@ class NTRCACirtificateDownloadView(View):
     def get(self, request):
         template_name = 'certificate.html'
         all_district = request.session.get('all_district')
+        page_obj = None
         if all_district:
             qs = NTRCACirtificate.objects.filter(permanent_district__name=all_district)
             paginator = Paginator(qs, 100)
@@ -156,3 +180,23 @@ class NTRCACirtificateView(View):
             print(f"Roll {obj.roll} SSC Result {obj.ssc_result} {data[1]} Hsc Result {obj.hsc_result} {data[2]} Loop {count}")
             count += 1
         return HttpResponse("Success")
+
+
+class NTRCADuplicateCertificatePrintView(View):
+
+    def get(self, request):
+        template_name = 'duplicate_certificate.html'
+        single_roll = request.session.get('duplicate_roll')
+        
+        single_data = NTRCACirtificate.objects.none()
+
+        try:
+            single_data = NTRCACirtificate.objects.get(roll=single_roll)
+        except Exception as e:
+            messages.warning(request, f'Certificate did not found for roll {single_roll}')
+            return HttpResponseRedirect('/')
+
+        context = {
+            'data': single_data
+        }
+        return render(request, template_name, context)

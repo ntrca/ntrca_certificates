@@ -4,7 +4,7 @@ from django import forms
 from django.forms.models import modelformset_factory
 from crispy_forms.helper import FormHelper
 from django.core.exceptions import ValidationError
-from .models import NtrcaResult
+from .models import NtrcaResult, DuplicateCertificate, DuplicateCertificateFile
 
 class NtrcaForms(forms.ModelForm):
     def __init__(self, *args, **kwargs):
@@ -106,4 +106,12 @@ class NtrcaMarkForms(forms.ModelForm):
 NtrcaMarkFormset = modelformset_factory(NtrcaResult, form=NtrcaMarkForms, extra=0)
 
 
-
+class DuplicateCertificateForm(forms.ModelForm):
+    """ Duplicate certificate form """
+    class Meta:
+        model = DuplicateCertificate
+        fields = ['note', 'document',]
+        # ntrca_certificate
+        widgets = {
+          'note': forms.Textarea(attrs={'rows':4, 'cols':100}),
+        }

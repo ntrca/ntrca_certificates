@@ -1,0 +1,302 @@
+{% load static %}
+{% load qr_code %}
+{% load ntrca_tag %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- <link href="https://fonts.googleapis.com/css2?family=Ephesis&family=Italianno&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap" rel="stylesheet"> -->
+	<link href="https://fonts.googleapis.com/css2?family=Ephesis&display=swap" rel="stylesheet">
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			outline: 0;
+		}
+
+		body {
+			font-family: 'Open Sans', sans-serif;
+			font-size: 16px;
+		}
+
+		.wrapper_full {
+			width: 100%;
+		}
+
+		.wrapper {
+			width: 950px;
+			margin: 0 auto;
+
+		}
+
+		.clr {
+			clear: both;
+		}
+
+		/* <!-- header-part --> */
+		.header_part {
+			margin-top: 30px;
+
+		}
+
+		.reg-no {
+			width: 200px;
+			float: left;
+		}
+
+		.file-header {
+			width: 500px;
+			float: left;
+			text-align: center;
+			font-family: Certificate;
+			margin-top: 105px;
+			font-size: 30px;
+			font-weight: 400;
+			color: #404040;
+			margin-left: 20px;
+		}
+
+		.image {
+			width: 150px;
+			float: right;
+			text-align: right;
+			margin-top: 40px;
+
+		}
+
+		.image img {
+			border: 1px solid #46951F;
+			padding: 1px;
+		}
+
+		/* certify */
+		.certify {
+			margin-top: 30px;
+		}
+
+		.certify p {
+			font-size: 16px;
+			word-spacing: 4px;
+			line-height: 35px;
+		}
+
+		/* post-section */
+		.post-section {
+			margin: 20px 0 0 30px;
+			font-size: 14px;
+			line-height: 26px;
+		}
+
+		.post-section .wrapper {
+			margin: 0px 30px;
+
+		}
+
+		/* marks section */
+		.Marks {
+			margin: 20px 30px 0px 30px;
+		}
+
+		.Marks .qr {
+			width: 140px;
+			float: left;
+		}
+
+		.Marks .qr img {
+			border: 1px solid black;
+		}
+
+		.Marks .tb {
+			width: 370px;
+			float: left;
+			margin-left: -10px;
+		}
+
+		.Marks .tb table,
+		th,
+		td {
+			border: 1px solid black;
+			border-collapse: collapse;
+			padding: 8px 15px;
+		}
+
+		.Marks .tb table {
+			text-align: center;
+			margin-top: 35px;
+		}
+
+		/* .bottom {
+			margin: 0px 30px 30px 30px;
+		} */
+
+		.bottom .date {
+			width: 500px;
+			float: left;
+			margin-top: 50px;
+			margin-bottom: 10px;
+		}
+		.bottom .member {
+			width: 450px;
+			float: right;
+			margin-top: 10px;
+		}
+		.bottom .member .mem1 {
+			width: 230px;
+			float: left;
+			margin-left: 50px;
+			text-align: center;
+		}
+		.bottom .member .mem2 {
+			width: 150px;
+			float: right;
+			margin-left: 15px;
+			text-align: center;
+		}
+		@media print {
+			.pagination {
+				display: none;
+			}
+			.image {
+				margin-right: 10px;
+			}
+			p {
+				color: #222;
+				font-weight: 300;
+			}
+			/* span {
+				color: #000 !important;
+				font-weight: 900;
+			} */
+
+			.header_part {
+				margin-top: 0px;
+			}
+			.reg-no {
+				margin-top: 60px;
+			}
+			@page {
+				/* size: 270mm 210mm 200mm 210mm; */
+				/* landscape */
+				margin: 35mm 18mm 10mm 24mm;
+			}
+		}
+
+		.qr img {
+			margin-top: 6px;
+			width: 110px;
+			height: 104px;
+			padding: 1px;
+		}
+
+		.reg-no {
+			margin-top: 60px;
+		}
+	</style>
+	<title>Certificate</title>
+	<style>
+		@font-face {
+			font-family: Certificate;
+			src: url(fonts/Certificate\Regular.ttf);
+		}
+	</style>
+</head>
+
+<body>
+	<div class="wrapper_full header_part">
+		<div class="wrapper">
+			<div class="reg-no">
+				<p>Reg. No. 162019{{ data.reg }}</p>
+			</div>
+			<div class="file-header" style="font-family: Certificate;">
+				<h3>Certificate</h3>
+				<h6 style="font-size: 22px;">16th Teachers' Registration Examination 2019</h6>
+			</div>
+			<div class="image">
+                <span style="display: inline-block;padding:4px;border:1px solid #ccc;margin-bottom:10px;">Duplicate</span>
+				<img src="/static/media/{{ data.invoice }}.jpg" alt="img " height="120px" width="120px" />
+			</div>
+			<div>
+				<div class="clr"></div>
+			</div>
+			<!-- certify section-->
+			<div class="certify">
+				<p style="font-size: 18px;">
+					This is to certify that Mr./Ms. <span style="font-family: Gabriola; font-size: 24px;">{{ data.name|title }}</span>, Son/Daughter of:
+					<span style="font-family: Gabriola; font-size: 24px;"><b>{{ data.father_name|title }}</b></span> and <span style="font-family: Gabriola; font-size: 24px;"><b>{{ data.mother_name|title }}</b></span>, Date of birth:
+					<span style="font-family: Gabriola; font-size: 24px;"><b>{{ data.dob| date:"d- F- Y" }}</b></span>, Village/Holding: <span style="font-family: Gabriola; font-size: 24px;"><b>{{ data.permanent_vill|title }}</b></span>,
+					Post Office: <span style="font-family: Gabriola; font-size: 24px;"><b>{{ data.permanent_post|title }}</b></span>, Upazila/Metropolitan Area:
+					<span style="font-family: Gabriola; font-size: 24px;"><b>{{ data.permanent_ps|title }}</b></span>, District: <span style="font-family: Gabriola; font-size: 24px;"><b>{{ data.permanent_dist|title }}</b></span>, bearing
+					Roll Number: <span style="font-family: Gabriola; font-size: 28px;"><b>{{ data.roll }}</b></span>
+					has passed 16th Teachers' Registration Examination.
+				</p>
+			<div class="clr"></div>
+			</div>
+	
+			<!-- post-section -->
+			<div class="post-section">
+					<p><strong>Subject :</strong> <span style="margin-left: 10px; font-size: 14px;">{{ data.subject_name }}</span></p>
+					<p><strong>Post :</strong> <span style="margin-left: 10px; font-size: 14px;">{{ data.post_name }}</span></p>
+					<p><strong>Type of Non-Government Educational Institution(s) :</strong> <span style="margin-left: 10px; font-size: 14px;">{{ data.institute_type }}</span></p>
+				
+				<div class="clr"></div>
+			</div>
+	
+			<!-- marks section -->
+			<div class="Marks">
+				<div class="qr">
+					<p style="margin-bottom: 10px;"><strong>Marks Obtained :</strong></p>
+					<img
+						src="https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=16th Teachers' Registration Examination 2019 | Name: {{ data.name }} | Father's Name: {{ data.father_name }} | Mother's Name: {{ data.mother_name }} | Roll: {{ data.roll }} | Reg: 162019{{ data.reg }} | Optional Marks: {{ data.written_number }} | Institution's Type(s): {{ data.institute_type }}"
+						alt="qrcode"
+					/>
+				</div>
+				<div class="tb">
+					<table>
+						<tr>
+							<th>Exam</th>
+							<th>Full Marks</th>
+							<th>Marks Obtained</th>
+						</tr>
+						<tr>
+							<td>Optional</td>
+							<td>100</td>
+							<td>{{ data.written_number }}</td>
+						</tr>
+						<tr>
+							<td>Viva‑Voce</td>
+							<td>20</td>
+							<td>{{ data.total_number }}</td>
+						</tr>
+					</table>
+				</div>
+			<div class="clr"></div>
+			</div>
+			<div class="bottom">
+				<div class="member">
+					<div class="mem1">
+						<hr />
+						<p style="margin-top: 5px;">
+							Member Examination Evaluation & Certification
+						</p>
+					</div>
+
+					<div class="mem2">
+						<hr />
+						<p style="margin-top: 5px;">Chairman</p>
+					</div>
+				</div>
+				<div class="date">
+					<p style="font-size: 12px;">Result published on: Dhaka, 17 October, 2021</p>
+				</div>
+				<div class="clr"></div>
+			</div>
+		</div>
+	</div>	
+</body>
+
+</html>

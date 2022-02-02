@@ -26,6 +26,11 @@
         width: 100%;
     } */
     </style>
+    <script type="text/javascript">
+        setTimeout(function() {
+            $('#message').fadeOut('fast');
+        }, 2000);
+    </script>
 </head>
 <body style="background: rgba(0, 0, 0, 0.178); font-family: 'Open Sans', sans-serif; font-size: 18px;" onLoad="noBack();" onpageshow="if (event.persisted) noBack();" onUnload="">
     {% include 'navbar.html' %}
@@ -34,7 +39,7 @@
         <div class="row">
             <div class="col-8 offset-2">
                 {% if messages %}
-                <ul class="messages text-center" style="list-style:none">
+                <ul class="messages text-center" style="list-style:none" id="message">
                     {% for message in messages %}
                     <li class="alert alert-warning" style="color: #000;">{{ message }}</li>
                     {% endfor %}

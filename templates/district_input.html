@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
 {% block content %}
 <div class="container bg">
     <div class="row">
@@ -10,8 +12,9 @@
         </div>
         {% endif %}
 
+        <!-- left -->
         <div class="col-md-6">
-            <div class="card my-5">
+            <div class="card my-3">
                 <div class="card-body">
                     <form method="POST">
                         {% csrf_token %}
@@ -32,24 +35,9 @@
             </div>
         </div>
 
+        <!-- right -->
         <div class="col-md-6">
-            <div class="card my-5">
-                <div class="card-body">
-                    <form method="POST">
-                        {% csrf_token %}
-                        <div class="form-group">
-                            <h5 style="text-align:center">Single Certificate</h5>
-                            <label for="exampleInputPassword1">Roll</label>
-                            <input type="number" class="form-control" name="roll" id="roll" placeholder="Please Enter Roll" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-12">
-            <div class="card mb-5">
+            <div class="card my-3">
                 <div class="card-body">
                     <form method="POST">
                         {% csrf_token %}
@@ -69,6 +57,44 @@
                 </div>
             </div>
         </div>
+        
+        <!-- bottom section -->
+        <!-- left -->
+        <div class="col-md-12">
+            <div class="card my-3 mb-4">
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <h5 style="text-align:center">Single Certificate</h5>
+                            <label for="exampleInputPassword1">Roll</label>
+                            <input type="number" class="form-control" name="roll" id="roll" placeholder="Please Enter Roll" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- right duplicate certificate -->
+        <div class="col-md-12">
+            <div class="card my-3 mb-4">
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <h5 style="text-align:center">Duplicate Certificate</h5>
+                            <label for="exampleInputPassword1">Roll</label>
+                            <input type="number" class="form-control" name="duplicate_roll" id="duplicate_roll" placeholder="Please Enter Roll" required>
+                        </div>
+                        {{ form|crispy }}
+                        <br>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
     </div>
 </div>
 <script>

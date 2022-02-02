@@ -28,13 +28,24 @@ class SubjectAdmin(admin.ModelAdmin):
     ]
 admin.site.register(Subject, SubjectAdmin)
 
+class DuplicateCertificateInline(admin.TabularInline):
+    model = DuplicateCertificate
+    extra = 0
+
+    def get_queryset(self, request):
+        qs = super(DuplicateCertificateInline, self).get_queryset(request)
+        return qs
+
 class NTRCACirtificateAdmin(admin.ModelAdmin):
     list_display = [
     'invoice','name', 'roll', 'reg', 'subject_code', 'post_code', 'subject_name',
     'total_number',
     ]
     list_filter = ['subject_code']
-    search_fields = ['roll']
+    search_fields = ['roll', 'name']
+    inlines = [
+        DuplicateCertificateInline,
+    ]
 
 
 admin.site.register(NTRCACirtificate, NTRCACirtificateAdmin)
@@ -53,16 +64,16 @@ class DuplicateCertificateAdmin(admin.ModelAdmin):
     list_filter = ('ntrca_certificate', 'created_user', 'created', 'updated')
 
 
-@admin.register(DuplicateCertificateFile)
-class DuplicateCertificateFileAdmin(admin.ModelAdmin):
-    list_display = (
-        'id',
-        'duplicate_certificate',
-        'document',
-        'created',
-        'updated',
-    )
-    list_filter = ('duplicate_certificate', 'created', 'updated')
+# @admin.register(DuplicateCertificateFile)
+# class DuplicateCertificateFileAdmin(admin.ModelAdmin):
+#     list_display = (
+#         'id',
+#         'duplicate_certificate',
+#         'document',
+#         'created',
+#         'updated',
+#     )
+#     list_filter = ('duplicate_certificate', 'created', 'updated')
 
 class PostNameAdmin(admin.ModelAdmin):
     list_display = [
