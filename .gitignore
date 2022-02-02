@@ -119,3 +119,4 @@ temp/
 # IDE
 .idea/
 .vscode/
+static/media
