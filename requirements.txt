@@ -13,6 +13,7 @@ defusedxml==0.6.0
 distlib==0.3.1
 Django==3.1.4
 django-crispy-forms==1.10.0
+django-extensions==3.1.5
 django-filter==21.1
 django-qr-code==2.2.0
 entrypoints==0.3
@@ -65,7 +66,6 @@ pyphen==0.11.0
 pyrsistent==0.16.0
 python-dateutil==2.8.1
 pytz==2020.1
-# pywin32==302
 pywinpty==0.5.7
 pyzmq==19.0.1
 qrcode==7.3.1
