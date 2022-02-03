@@ -104,7 +104,7 @@ class NTRCACirtificate(models.Model):
     institute_type = models.CharField(max_length=255, null=True)
     dob = models.DateTimeField(null=True)
     gender = models.PositiveIntegerField(choices=GENDER, null=True)
-    nid = models.CharField(null=True, max_length=255)
+    nid = models.CharField(max_length=255, null=True, blank=True)
     religion = models.CharField(max_length=50, null=True)
     permanent_vill = models.TextField(max_length=255, null=True)
     written_number = models.CharField(max_length=200, null=True)
