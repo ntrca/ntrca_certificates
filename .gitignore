@@ -120,3 +120,4 @@ temp/
 .idea/
 .vscode/
 static/media
+static/photo
