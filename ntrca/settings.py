@@ -110,8 +110,8 @@ STATIC_URL = '/static/'
 STATIC_ROOT = "/static/"
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static"), ]
 
-MEDIA_URL = '/photo/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/photo')
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # FILE_UPLOAD_DIRECTORY_PERMISSIONS = 0o760
 # FILE_UPLOAD_PERMISSIONS = 0o644
