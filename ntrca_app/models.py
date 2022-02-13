@@ -137,7 +137,7 @@ class DuplicateCertificate(models.Model):
         NTRCACirtificate, on_delete=models.CASCADE,
         related_name='duplicate_certificates'
     )
-    note = models.TextField(help_text='Duplicate note')
+    note = models.TextField(help_text='Duplicate note', default='General', null=True, blank=True)
     document = models.FileField(null=True, blank=True)
     created_user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)

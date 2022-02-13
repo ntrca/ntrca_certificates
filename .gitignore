@@ -121,3 +121,4 @@ temp/
 .vscode/
 static/media
 static/photo
+static/photo/
