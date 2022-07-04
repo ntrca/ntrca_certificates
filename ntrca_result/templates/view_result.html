@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+    .container-fluid{
+        position: relative;
+    }
+    .cards{
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 99;
+        width: 100%;
+    }
+    table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    }
+
+    td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    }
+    .bg{
+        background: #349B39;
+    }
+    
+    tr:nth-child(even) {
+    background-color: #dddddd!important;
+}
+
+</style>
+<div class="container-fluid">
+    <div class="row my-0 mx-0">
+        <div class="col-lg-12 my-5 px-0">
+            <div class="card px-1" style="box-shadow: 2px 2px 4px;">
+                <div class="row mx-0">
+                    <div class="col-lg-8 px-0 ml-3">
+                        <div class="cards">
+                            <form class="pt-5 filter" method="get">
+                                {{ filter.form }}
+                                <button class="btn btn-sm bg text-white" type="submit">Search</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                  <table id="example" style="width: 100%;">
+                    <a href="{% url 'export_users_xls' %}" class="btn btn-sm bg text-white my-4 float-right">Export to Excel</a>
+                    <thead>
+                        <tr>
+                            <th style="width: 8%;">Roll</th>
+                            <th style="width: 15%;">Name</th>
+                            <th style="width: 15%;">Father Name</th>
+                            <th style="width: 15%;">Mother Name</th>
+                            <th>Subject Code</th>
+                            <th>Certificate Number</th>
+                            <th>Viva Number</th>
+                            <th>Total Number</th>
+                            <th>Comments</th>
+                            <th>Edit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        {% for ntrca in ntrca_all %}
+                        <tr>
+                            <td>{{ ntrca.roll }}</td>
+                            <td>{{ ntrca.name }}</td>
+                            <td>{{ ntrca.father }}</td>
+                            <td>{{ ntrca.mother }}</td>
+                            <td>{{ ntrca.subject_code }}</td>
+                            <td>{{ ntrca.s_number }}</td>
+                            <td>{{ ntrca.v_number }}</td>
+                            <td>{{ ntrca.total_number }}</td>
+                            <td>{{ ntrca.comment }}</td>
+                            <td><a href="{% url 'ntrca_update' ntrca.pk %}"><i class="fas fa-edit"></i></a></td>
+                            
+                        </tr>
+                        {% endfor %}
+                </tbody>
+                </table>
+                <a class="btn btn-sm bg-success text-white my-4 float-right" href="{% url 'ntrca_search_date' %}">Create result</a>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extrajs %}
+<script>
+    $(document).ready( function () {
+    $('#example').DataTable();
+} );
+</script>
+{% endblock extrajs %}

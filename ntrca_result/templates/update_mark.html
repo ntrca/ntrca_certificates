@@ -1,0 +1,158 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    #s_number, #v_number, #total_number, #comment{
+        padding-left: 10px;
+        border: 1px solid rgb(88, 88, 88);
+        height: 35px;
+        border-radius: 3px;
+        width: 360px;
+    }
+    td, th {
+    text-align: left;
+    padding: 8px;
+    }
+    .error{
+        color: rgb(146, 8, 8);
+    }
+    .borders{
+        border: 2px solid rgb(141, 4, 4)!important;
+    }
+    table tr .roll{
+        position: relative;
+    }
+    table tr .roll::after{
+        position: absolute;
+        content: '';
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 400%;
+        background: rgba(247, 245, 245, 0.178);
+        z-index: 9;
+    }
+    
+</style>
+<div class="container">
+    <div class="row my-5 mx-0">
+        <div class="col-lg-8 m-auto text-center px-0">
+            <div class="card w-100 p-5">
+                <div class="card-body">
+                    <H4 class="text-center pb-3">Enter Your Roll Number</H4>
+                <form id="form_id" action="" method="post">
+                    {% csrf_token %}
+                <table align="center">
+                        <tr>
+                            <td>Candidate Roll</td>
+                            <td>:</td>
+                            <td class="roll"> {{ formset.roll }}</td>
+                        </tr>
+                        <tr>
+                            <td>Candidate Name</td>
+                            <td>:</td>
+                            <td class="name"> {{ formset.name }}</td>
+                        </tr>
+                        <tr>
+                            <td>Father Name</td>
+                            <td>:</td>
+                            <td class="father"> {{ formset.father }}</td>
+                        </tr>
+                        <tr>
+                            <td>Mother Name</td>
+                            <td>:</td>
+                            <td class="mother"> {{ formset.mother }}</td>
+                        </tr>
+                        <tr>
+                            <td>Certificate Number</td>
+                                <td>:</td>
+                            <td> {{ formset.s_number }}</td>
+                        </tr>
+                        <tr>
+                            <td>Viva Number</td>
+                                <td>:</td>
+                            <td> {{ formset.v_number }}</td>
+                        </tr>
+                        <tr>
+                            <td>Total Number</td>
+                                <td>:</td>
+                            <td disabled> {{ formset.total_number }}</td>
+                        </tr>
+                        <tr>
+                            <td>Comment</td>
+                                <td>:</td>
+                            <td disabled> {{ formset.comment }}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td><button class="btn btn-sm bg-success text-white my-1" type="submit">Submit</button></td>
+                            
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block extrajs %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.formset/1.2.2/jquery.formset.min.js"></script>
+<script>
+    $(function() {
+        $("#{{ formset.prefix }}-row").formset({
+            animateForms: true
+        });
+    });
+</script>
+<script>
+    $(document).ready(function(){
+
+        $("#s_number, #v_number").keyup(function(){
+        var total = 0
+        var sNumber = Number($("#s_number").val());
+        var vNumber = Number($("#v_number").val());
+        var total = sNumber+vNumber;
+        
+        $("#total_number").val(total);
+        });
+    });
+
+    $(document).ready(function(){
+        
+        $("#form_id").validate({
+            rules:{
+                s_number:{
+                    required:true,
+                    max: 12,
+                    min: 0,
+                },
+                v_number:{
+                    required:true,
+                    max: 8,
+                    min: 0,
+                },
+            },
+            highlight:function(element){
+                $(element).addClass("borders")
+            },
+            unhighlight: function(element){
+                $(element).removeClass("borders")
+            },
+            messages:{
+                s_number:{
+                    max:'Maximum Number 12',
+                    min:'Negative Number is not Allowed',
+                },
+                v_number: {
+                    max: 'Maximum Number 8',
+                    min:'Negative Number is not Allowed',
+                },
+            },
+        });
+    });
+</script>
+{% endblock extrajs %}

@@ -1,0 +1,52 @@
+
+.site-footer
+{
+  background-color:#349B39;
+  padding:25px 0 20px;
+  font-size:15px;
+  line-height:24px;
+  color:#fff;
+}
+.copyright-text
+{
+  padding-left: 50px;
+  margin:0;
+  display: inline-block;
+}
+.site-footer a img{
+  width: 100px;
+  display: inline-block;
+  text-align: right;
+}
+.ite-footer a{
+  float: right;
+  color: #fff;
+}
+.navbar-brand img{
+  width: 100px;
+}
+.table td, .table th {
+  vertical-align: middle;
+}
+
+
+/* ============================================ */
+/* .dataTables_paginate .previous{
+  background: rgb(63, 122, 63)!important;
+  color: #fff!important;
+  border-top-left-radius: 10%!important;
+  border-bottom-left-radius: 10%!important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
+    cursor: default;
+    color: rgb(187, 150, 150) !important;
+    border: 1px solid transparent;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+  color: #fff !important;
+  border: 1px solid #979797;
+  background: rgb(0, 58, 0)!important;
+  border-radius: 50%!important;
+} */

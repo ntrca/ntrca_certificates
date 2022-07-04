@@ -1,0 +1,160 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<style>
+    #s_number, #v_number, #total_number, #comment{
+        padding-left: 10px;
+        border: 1px solid rgb(88, 88, 88);
+        height: 35px;
+        border-radius: 3px;
+        width: 150px;
+    }
+
+    table tr{
+        position: relative;
+    }
+    table tr .name::before{
+        position: absolute;
+        content: '';
+        top: 0;
+        left: 0;
+        width: 50%;
+        height: 100%;
+        background: rgba(77, 76, 76, 0);
+        z-index: 9;
+    }
+    table tr .roll{
+        position: relative;
+    }
+    table tr .roll::after{
+        position: absolute;
+        content: '';
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(252, 250, 250, 0.178);
+        z-index: 9;
+    }
+    td, th {
+    text-align: left;
+    padding: 8px;
+    }
+    .error{
+        color: rgb(146, 8, 8);
+    }
+    .delete-row, .add-row{
+        display: none;
+    }
+    .card{
+        border: 0px solid #fff;
+    }
+    
+</style>
+<div class="container-fluid">
+    <div class="row my-5 mx-0">
+        <div class="col-lg-12 m-auto text-center px-0">
+            <div class="card p-5">
+                <div class="card-body">
+                    <H4 class="text-center pb-3">Enter Your Mark's</H4>
+                <form id="form_id" action="" method="post" onsubmit="return validateForm()">
+                    {% csrf_token %}
+
+                    <div class="card">
+                        {% comment %}
+                        <!-- {% if forms.errors %}
+                            {% for field in forms %}
+                                {% for error in field.errors %}
+                                    <div class="alert alert-danger">
+                                        <strong>{{field.label }}: {{ error|escape }}</strong>
+                                    </div>
+                                {% endfor %}
+                            {% endfor %}
+                        {% endif %} -->
+                        {% endcomment %}
+                      <div class="card-body">
+                        {{ formset.management_form }}
+                        {{ formset.errors }}
+                        {{ formset.non_form_errors }}
+                        
+                            <div class="inline {{ formset.prefix }} mb-5">
+                                <div class="row mx-0">
+                                    <div class="col-lg-12 px-0">
+                                        <table>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Father</th>
+                                                <th>Mother</th>
+                                                <th>Roll</th>
+                                                <th>C Number</th>
+                                                <th>V number</th>
+                                                <th>Comment</th>
+                                            </tr>
+                                            {% for form in formset %}
+                                            {{ form.id }}
+                                            <tr>
+                                                <td class="name">{{ form.name }}</td>
+                                                <td class="father">{{ form.father }}</td>
+                                                <td class="mother">{{ form.mother }}</td>
+                                                <td class="roll">{{ form.roll }}</td>
+                                                <td>{{ form.s_number|as_crispy_field }}</td>
+                                                <td>{{ form.v_number|as_crispy_field }}</td>
+                                                <td>{{ form.comment|as_crispy_field }}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                      </div>
+                  </div>
+                    <input type="submit" value="submit">
+                </form>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block extrajs %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.formset/1.2.2/jquery.formset.min.js"></script>
+<script>
+    // For form set
+    $(".inline.{{ formset.prefix }}").formset({
+          prefix: "{{ partner_formset.prefix }}",
+    })
+
+    // For validation
+    
+    function validateForm() {
+    var s_number = document.forms["form_id"]["form-0-s_number"].value;
+    var s_number_1 = document.forms["form_id"]["form-1-s_number"].value;
+    var s_number_2 = document.forms["form_id"]["form-2-s_number"].value;
+    var s_number_3 = document.forms["form_id"]["form-3-s_number"].value;
+    var s_number_4 = document.forms["form_id"]["form-4-s_number"].value;
+    var s_number_5 = document.forms["form_id"]["form-5-s_number"].value;
+    var s_number_6 = document.forms["form_id"]["form-6-s_number"].value;
+    var v_number = document.forms["form_id"]["form-0-v_number"].value;
+    var v_number_1 = document.forms["form_id"]["form-1-v_number"].value;
+    var v_number_2 = document.forms["form_id"]["form-2-v_number"].value;
+    var v_number_3 = document.forms["form_id"]["form-3-v_number"].value;
+    var v_number_4 = document.forms["form_id"]["form-4-v_number"].value;
+    var v_number_5 = document.forms["form_id"]["form-5-v_number"].value;
+    var v_number_6 = document.forms["form_id"]["form-6-v_number"].value;
+    
+    console.log(s_number, 'and', v_number )
+
+        if (s_number > 12 || s_number_1 > 12 || s_number_2 > 12 || s_number_3 > 12 || s_number_4 > 12 ||s_number_5 > 12 || s_number_6 > 12) {
+            alert(s_number + "Max number is 12");
+            return false;
+        }
+        if (v_number > 8 || v_number_1 > 8 || v_number_2 > 8 || v_number_3 > 8 || v_number_4 > 8 ||v_number_5 > 8 || v_number_6 > 8) {
+            alert(v_number + "Max number is 8");
+            return false;
+        }
+    }
+</script>
+{% endblock extrajs %}
