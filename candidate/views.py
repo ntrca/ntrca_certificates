@@ -1,4 +1,7 @@
+import os
+import pandas as pd
 from django.db import connections
+from django.views.generic import View
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Candidate
@@ -60,3 +63,30 @@ def create_data(request):
             )
             print(f"CREATED: {count}")
             count += 1
+
+
+class ImportCandidate(View):
+    def get(self, request):
+        data = pd.read_json(os.path.join(os.getcwd(), "DB/json/Candidate-2022-07-05.json"))
+        data_to_dict = data.to_dict(orient='records')
+        total = 0
+        get_data = 0
+        create_data = 0
+        for row in data_to_dict:
+            try:
+                get_candidate = Candidate.objects.get(roll=row['roll'])
+                get_data += 1
+                print(f" Get Data {get_candidate}, {get_data}")
+            except Exception as e:
+                Candidate.objects.create(
+                    id=row['id'], board=row['board'], interview_date=row['interview_date'],
+                    roll=row['roll'], subject_code=row['subject_code'], name=row['name'],
+                    father=row['father'], mother=row['mother'], s_exam=row['s_exam'],
+                    s_result=row['s_result'], s_result_text=row['s_result_text'],
+                    h_exam=row['h_exam'], h_result=row['h_result'], invoice=row['invoice'],
+                    h_result_text=row['h_result_text'], dob=row['dob']
+                )
+                create_data += 1
+                print(create_data, "*" * 100)
+            total += 0
+        return HttpResponse(f"Data {get_data} + {create_data} = {total}")
