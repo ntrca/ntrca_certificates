@@ -6,7 +6,7 @@ from django.core.paginator import Paginator
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 
-from .models import NTRCACirtificate, District, Thana, PostOffice
+from .models import NTRCACirtificate, District, ExamsName
 from .forms import DuplicateCertificateForm
 
 
@@ -29,6 +29,16 @@ GENDER = (
     (2, 'Female'),
     (3, 'Both'),
 )
+
+
+class DashboardView(View):
+    template_name = 'dashboard.html'
+    def get(self, request):
+        exam_name = ExamsName.objects.all()
+        context = {
+            'exam_name': exam_name,
+        }
+        return render(request, self.template_name, context)
 
 
 class NtrcaInputDistrict(View):

@@ -1,10 +1,22 @@
 from django.db import models
-from django.db.models.enums import Choices
-from numpy.core.numeric import roll
 from django.contrib.auth.models import User
 
 
+class ExamsName(models.Model):
+    name = models.CharField(max_length=255)
+    code = models.CharField(unique=True, max_length=255)
+    year = models.PositiveIntegerField()
+    examth = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
+
+
 class NtrcaResult(models.Model):
+    exam_name = models.ForeignKey(
+        ExamsName, on_delete=models.SET_NULL, null=True, blank=True,
+        related_name="ntrca_result"
+    )
     roll = models.PositiveIntegerField(null=True)
     # extra info start ---------------------------------
     board = models.IntegerField(blank=True, null=True)
@@ -90,6 +102,9 @@ class Village(models.Model):
 
 class NTRCACirtificate(models.Model):
     invoice = models.CharField(max_length=200, null=True)
+    exam_name = models.ForeignKey(
+        ExamsName, on_delete=models.SET_NULL, null=True, blank=True,
+    )
     roll = models.PositiveIntegerField(null=True)
     reg = models.CharField(null=True, max_length=50)
     name = models.CharField(max_length=200, blank=True, null=True)

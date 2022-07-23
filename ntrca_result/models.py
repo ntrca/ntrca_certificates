@@ -1,7 +1,11 @@
 from django.db import models
+from ntrca_app.models import ExamsName
 
 class NtrcaResult(models.Model):
     roll = models.PositiveIntegerField(unique=True, null=True)
+    exam_name = models.ForeignKey(
+        ExamsName, on_delete=models.SET_NULL, null=True, blank=True,
+    )
     # extra info start ---------------------------------
     board = models.IntegerField(blank=True, null=True)
     interview_date = models.DateField(blank=True, null=True)

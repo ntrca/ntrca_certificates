@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import (
     NtrcaResult, NtrcaResultPdf, Subject, PostName,
     NTRCACirtificate, PostAndSubjectCode, District, Thana, PostOffice,
-    DuplicateCertificate, DuplicateCertificateFile
+    DuplicateCertificate, DuplicateCertificateFile, ExamsName
 )
 
 class NtrcaMoelAdmin(admin.ModelAdmin):
@@ -26,7 +26,15 @@ class SubjectAdmin(admin.ModelAdmin):
     list_display = [
     'code','name',
     ]
+
 admin.site.register(Subject, SubjectAdmin)
+
+
+class ExamsNameAdmin(admin.ModelAdmin):
+    list_display = [
+    'code','name',
+    ]
+admin.site.register(ExamsName, ExamsNameAdmin)
 
 class DuplicateCertificateInline(admin.TabularInline):
     model = DuplicateCertificate

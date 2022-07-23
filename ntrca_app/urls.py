@@ -3,11 +3,12 @@ from django.urls import path
 from .views import (
     NTRCACirtificateView, NtrcaInputDistrict, NTRCACirtificateDownloadView,
     NtrcaSingleData, NtrcaDistrictDistribution,
-    NTRCADuplicateCertificatePrintView
+    NTRCADuplicateCertificatePrintView, DashboardView
 )
 
 urlpatterns = [
-    path('', NtrcaInputDistrict.as_view(), name="ntrca_district"),
+    path('', DashboardView.as_view(), name="dashboard"),
+    path('ntrca/district/', NtrcaInputDistrict.as_view(), name="ntrca_district"),
     path(
         'ntrca/cirtificate/download/',
         NTRCACirtificateDownloadView.as_view(),
