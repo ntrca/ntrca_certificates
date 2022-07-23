@@ -6,6 +6,7 @@ from django.core.paginator import Paginator
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 
+from ntrca_result.models import NtrcaResult
 from .models import NTRCACirtificate, District, ExamsName
 from .forms import DuplicateCertificateForm
 
@@ -43,7 +44,8 @@ class DashboardView(View):
 
 class NtrcaInputDistrict(View):
 
-    def get(self, request):
+    def get(self, request, pk):
+        exam_name = ExamsName.objects.get(pk=pk)
         template_name = 'district_input.html'
         all_district = District.objects.all()
         form = DuplicateCertificateForm(request.POST or None)
@@ -53,28 +55,29 @@ class NtrcaInputDistrict(View):
         }
         return render(request, template_name, context)
         
-    def post(self, request):
+    def post(self, request, pk):
+        exam_name = ExamsName.objects.get(pk=pk)
         template_name = 'district_input.html'
 
         district = request.POST.get('district')
         roll = request.POST.get('roll')
         district_distribution = request.POST.get('district_distribution')
         duplicate_roll = request.POST.get('duplicate_roll')
-        print('input data', district, roll, district_distribution, duplicate_roll)
-      
         if district is not None:
             request.session['all_district'] = district
-            return redirect('ntrca_cirtificate_download')
+            return redirect('ntrca_cirtificate_download', pk=exam_name.pk)
         elif roll is not None:
             request.session['single_roll'] = roll
-            return redirect('ntrca_single_data')
+            return redirect('ntrca_single_data', pk=exam_name.pk)
         elif district_distribution is not None:
             request.session['all_data'] = district_distribution
-            return redirect('ntrca_district_distribution')
+            return redirect('ntrca_district_distribution', pk=exam_name.pk)
         elif duplicate_roll is not None:
             # duplicate_roll section
             try:
-                single_data = NTRCACirtificate.objects.get(roll=duplicate_roll)
+                single_data = NTRCACirtificate.objects.get(
+                    roll=duplicate_roll, exam_name=exam_name
+                )
                 if single_data:
                     form = DuplicateCertificateForm(request.POST or None)
                     if form.is_valid():
@@ -86,21 +89,22 @@ class NtrcaInputDistrict(View):
                         return redirect('ntrca_duplicate_certificate')
                     else:
                         messages.warning(request, 'Please fill up all required field.')
-                        return redirect('ntrca_district')
+                        return redirect('ntrca_district', pk=exam_name.pk)
             except Exception as e:
                 messages.warning(request, f'Certificate did not found for roll {duplicate_roll}')
-                return redirect('ntrca_district')
+                return redirect('ntrca_district', pk=exam_name.pk)
         else:
             message = "Data Not Match"
             return render(request, template_name, {'message': message})
 
 
 class NtrcaDistrictDistribution(View):
-    def get(self, request):
+    def get(self, request, pk):
+        exam_name = ExamsName.objects.get(pk=pk)
         template_name = 'district_distribution.html'
         all_data = request.session.get('all_data')
         all_datas = NTRCACirtificate.objects.filter(
-            permanent_district__name=all_data
+            permanent_district__name=all_data, exam_name=exam_name
         )
         subject_list = []
         for data in all_datas:
@@ -121,19 +125,19 @@ class NtrcaDistrictDistribution(View):
 
 
 class NtrcaSingleData(View):
-    def get(self, request):
+    def get(self, request, pk):
         template_name = 'single_data.html'
+        exam_name = ExamsName.objects.get(pk=pk)
         single_roll = request.session.get('single_roll')
-        
         single_data = NTRCACirtificate.objects.none()
-
         try:
-            single_data = NTRCACirtificate.objects.get(roll=single_roll)
+            single_data = NTRCACirtificate.objects.get(
+                roll=single_roll, exam_name=exam_name
+            )
         except Exception as e:
             print(e)
-            message = "Roll Not Found"
             messages.warning(request, f'Certificate did not found for roll {single_roll}')
-            return HttpResponseRedirect('/')
+            return redirect('ntrca_district', pk=exam_name.pk)
 
         context = {
             'data': single_data
@@ -142,12 +146,15 @@ class NtrcaSingleData(View):
 
 
 class NTRCACirtificateDownloadView(View):
-    def get(self, request):
+    def get(self, request, pk):
+        exam_name = ExamsName.objects.get(pk=pk)
         template_name = 'certificate.html'
         all_district = request.session.get('all_district')
         page_obj = None
         if all_district:
-            qs = NTRCACirtificate.objects.filter(permanent_district__name=all_district)
+            qs = NTRCACirtificate.objects.filter(
+                permanent_district__name=all_district, exam_name=exam_name
+            )
             paginator = Paginator(qs, 100)
             page_number = request.GET.get('page')
             page_obj = paginator.get_page(page_number)
@@ -155,42 +162,6 @@ class NTRCACirtificateDownloadView(View):
             'all_data': page_obj
         }
         return render(request, template_name, context)
-
-
-class NTRCACirtificateView(View):
-    def get(self, request):
-        reat_data = pd.read_excel("E:/Official/ntrca_certificates/ntrca_app/excel/education.xlsx")
-        list_data = reat_data.values.tolist()
-        print(list_data)
-        count = 1
-        for data in list_data:
-            obj = NTRCACirtificate.objects.get(roll=data[0])
-            try:
-                data1 = float(data[1])
-                data2 = float(data[2])
-            except Exception as e:
-                print(e, "*" * 100)
-                data1 = data[1]
-                data2 = data[2]
-            print(type(data1), "#" * 100, type(data2), "@" * 100)
-            if type(data1) == int or type(data1) == float:
-                if data1 <= 5.00 and data1 >= 2.00:
-                    print(f"SSC Data Varified")
-                    obj.ssc_result = data1
-                else:
-                    obj.ssc_result = None
-                obj.save()
-            if type(data2) == int or type(data2) == float:
-                if data2 <= 5 and data2 >= 2:
-                    print(f"HSC Data Varified")
-                    obj.hsc_result = data2
-                    obj.save()
-                else:
-                    obj.hsc_result = None
-                obj.save()
-            print(f"Roll {obj.roll} SSC Result {obj.ssc_result} {data[1]} Hsc Result {obj.hsc_result} {data[2]} Loop {count}")
-            count += 1
-        return HttpResponse("Success")
 
 
 class NTRCADuplicateCertificatePrintView(View):
@@ -211,3 +182,20 @@ class NTRCADuplicateCertificatePrintView(View):
             'data': single_data
         }
         return render(request, template_name, context)
+
+
+def update_data(request):
+    exam_name = ExamsName.objects.get(pk=1)
+    num = 0
+    num2 = 0
+    for obj in NTRCACirtificate.objects.all():
+        obj.exam_name = exam_name
+        num += 1
+        print(f"NTRCA Certi: {num}")
+        obj.save()
+    for obj in NtrcaResult.objects.all():
+        obj.exam_name = exam_name
+        num2 += 1
+        print(f"NTRCA Certi 2: {num2}")
+        obj.save()
+    return HttpResponse("Done")

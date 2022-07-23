@@ -15,7 +15,7 @@
         <!-- left -->
         {% for obj in exam_name %}
         <div class="col-md-4">
-            <a href="">
+            <a href="{% url 'ntrca_district' obj.pk %}">
                 <div class="card my-3">
                     <div class="card-body">
                         <h5 style="font-family: 'Roboto Slab'; text-align: center;">{{ obj.name }}</h5>

@@ -137,16 +137,3 @@ class UpdateCandidate(View):
             'formset': form
         }
         return render(request, 'update_mark.html', context)
-
-
-def insert_data_to_mysql(request):
-    with connections['result'].cursor() as cursor:
-        get_data = "SELECT * FROM `candidate`"
-        try:
-            cursor.execute(get_data)
-        except Exception as e:
-            print(e)
-        validate_data = cursor.fetchall()
-        if validate_data:
-            print(validate_data)
-    return HttpResponse("Get")

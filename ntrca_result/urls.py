@@ -1,6 +1,6 @@
 
 from django.urls import path
-from .views import NtrcaHomeView, NtrcaDateBoard, insert_data_to_mysql, NtrcaCreateResult, UpdateCandidate
+from .views import NtrcaHomeView, NtrcaDateBoard, NtrcaCreateResult, UpdateCandidate
 from .export import export_users_xls
 
 urlpatterns = [
@@ -16,5 +16,5 @@ urlpatterns = [
         ),
 
     path('export-data/', export_users_xls, name="export_users_xls"),
-    path('get-data/', insert_data_to_mysql, name= "insert_data"),
+    # path('get-data/', insert_data_to_mysql, name= "insert_data"),
 ]

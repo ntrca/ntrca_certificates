@@ -1,28 +1,27 @@
 
 from django.urls import path
 from .views import (
-    NTRCACirtificateView, NtrcaInputDistrict, NTRCACirtificateDownloadView,
-    NtrcaSingleData, NtrcaDistrictDistribution,
+    NtrcaInputDistrict, NTRCACirtificateDownloadView,
+    NtrcaSingleData, NtrcaDistrictDistribution, update_data,
     NTRCADuplicateCertificatePrintView, DashboardView
 )
 
 urlpatterns = [
     path('', DashboardView.as_view(), name="dashboard"),
-    path('ntrca/district/', NtrcaInputDistrict.as_view(), name="ntrca_district"),
+    path('update/data', update_data, name="update_data"),
     path(
-        'ntrca/cirtificate/download/',
+        'ntrca/district/<int:pk>/', NtrcaInputDistrict.as_view(),
+        name="ntrca_district"
+    ),
+    path(
+        'ntrca/cirtificate/download/<int:pk>/',
         NTRCACirtificateDownloadView.as_view(),
         name="ntrca_cirtificate_download"
     ),
-    path('ntrca/single/data/', NtrcaSingleData.as_view(),
+    path('ntrca/single/data/<int:pk>/', NtrcaSingleData.as_view(),
     name="ntrca_single_data"),
     path(
-        'ntrca/cirtificate/',
-        NTRCACirtificateView.as_view(), 
-        name="ntrca_cirtificateView"
-    ),
-    path(
-        'ntrca/district/distribution/',
+        'ntrca/district/distribution/<int:pk>/',
         NtrcaDistrictDistribution.as_view(), 
         name="ntrca_district_distribution"
     ),
