@@ -1,12 +1,13 @@
 from numpy.core.numeric import roll
 import pandas as pd
+import os
+import datetime
 from django.shortcuts import render, redirect, HttpResponse
 from django.views import View
 from django.core.paginator import Paginator
 from django.contrib import messages
-from django.http import HttpResponseRedirect
 
-from ntrca_result.models import NtrcaResult
+from candidate.models import Candidate
 from .models import NTRCACirtificate, District, ExamsName
 from .forms import DuplicateCertificateForm
 
@@ -51,7 +52,8 @@ class NtrcaInputDistrict(View):
         form = DuplicateCertificateForm(request.POST or None)
         context = {
             'all_district': all_district,
-            'form': form
+            'form': form,
+            'object': exam_name
         }
         return render(request, template_name, context)
         
@@ -166,18 +168,20 @@ class NTRCACirtificateDownloadView(View):
 
 class NTRCADuplicateCertificatePrintView(View):
 
-    def get(self, request):
+    def get(self, request, pk):
         template_name = 'duplicate_certificate.html'
+        exam_name = ExamsName.objects.get(pk=pk)
         single_roll = request.session.get('duplicate_roll')
         
         single_data = NTRCACirtificate.objects.none()
 
         try:
-            single_data = NTRCACirtificate.objects.get(roll=single_roll)
+            single_data = NTRCACirtificate.objects.get(
+                roll=single_roll, exam_name=exam_name.pk
+            )
         except Exception as e:
             messages.warning(request, f'Certificate did not found for roll {single_roll}')
-            return HttpResponseRedirect('/')
-
+            return redirect('ntrca_district', pk=exam_name.pk)
         context = {
             'data': single_data
         }
@@ -186,16 +190,10 @@ class NTRCADuplicateCertificatePrintView(View):
 
 def update_data(request):
     exam_name = ExamsName.objects.get(pk=1)
-    num = 0
-    num2 = 0
-    for obj in NTRCACirtificate.objects.all():
+    total = 0
+    for obj in Candidate.objects.all():
         obj.exam_name = exam_name
-        num += 1
-        print(f"NTRCA Certi: {num}")
         obj.save()
-    for obj in NtrcaResult.objects.all():
-        obj.exam_name = exam_name
-        num2 += 1
-        print(f"NTRCA Certi 2: {num2}")
-        obj.save()
+        total +=1
+        print(total)
     return HttpResponse("Done")

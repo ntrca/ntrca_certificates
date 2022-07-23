@@ -22,7 +22,7 @@
       <table class="table">
         <tr class="tr">
             <td width="10%" class="td">
-                <a class="navbar-brand float-right" href="{% url 'dashboard' %}">
+                <a class="navbar-brand float-right" href="/">
                   <img src="{% static 'img/logo.jpeg' %}">
                 </a>
             </td>
@@ -32,11 +32,13 @@
                 <span class="black12bold">16th Teachers' Registration Exam 2019</span></td>
           </tr>
       </table>
-      {% url 'ntrca_result' as result %}
-                {% if not request.path == result %}
-                <a class="btn btn-success" href="{% url 'ntrca_result' %}">Swich to result Application</a>
-                {% else %}
-                <a class="btn btn-success" href="/">Swich to certificate Application</a>
-                {% endif %}
+      {% if object %}
+        {% url 'result_home' object.pk as result %}
+        {% if not request.path == result %}
+        <a class="btn btn-success" href="{{ result }}">Swich to result Application</a>
+        {% else %}
+        <a class="btn btn-success" href="/">Swich to certificate Application</a>
+        {% endif %}
+      {% endif %}
     </div>
   </nav>

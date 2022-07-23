@@ -1,14 +1,14 @@
 
 from django.urls import path
-from .views import NtrcaHomeView, NtrcaDateBoard, NtrcaCreateResult, UpdateCandidate
+from .views import ResultHomeView, DateBoardView, MarkesEntry, UpdateCandidate
 from .export import export_users_xls
 
 urlpatterns = [
-    path('', NtrcaHomeView.as_view(), name="ntrca_result"),
-    path('create-date-doard/', NtrcaDateBoard.as_view(), name="ntrca_search_date"),
+    path('result/home/<int:exam_pk>/', ResultHomeView.as_view(), name="result_home"),
+    path('search/page/<int:pk>/', DateBoardView.as_view(), name="ntrca_search_date"),
     path(
-        'result-create/', NtrcaCreateResult.as_view(), 
-        name="ntrca_result_create"
+        'result-create/<int:pk>/', MarkesEntry.as_view(), 
+        name="markes_entry"
         ),
     path(
         'result-update/<int:pk>/', UpdateCandidate.as_view(), 

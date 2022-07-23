@@ -7,7 +7,7 @@ class NtrcaResult(models.Model):
         ExamsName, on_delete=models.SET_NULL, null=True, blank=True,
     )
     # extra info start ---------------------------------
-    board = models.IntegerField(blank=True, null=True)
+    board = models.CharField(max_length=200, blank=True, null=True)
     interview_date = models.DateField(blank=True, null=True)
     subject_code = models.IntegerField(blank=True, null=True)
     name = models.CharField(max_length=200, blank=True, null=True)

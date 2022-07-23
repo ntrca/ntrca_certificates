@@ -1,9 +1,12 @@
 from django.db import models
 
-# Create your models here.
+from ntrca_app.models import ExamsName
 
 
 class Candidate(models.Model):
+    exam_name = models.ForeignKey(
+        ExamsName, on_delete=models.SET_NULL, null=True, blank=True,
+    )
     board = models.IntegerField(blank=True, null=True)
     interview_date = models.DateField(blank=True, null=True)
     roll = models.IntegerField(blank=True, null=True)

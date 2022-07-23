@@ -1,97 +1,112 @@
 from django.shortcuts import render, redirect
-from django.views.generic.edit import CreateView, UpdateView
-from django.db import connections
-from django.views import View
-from django.urls import reverse_lazy
-from django.contrib.sessions.models import Session
+from django.views.generic import View
+from ntrca_app.models import ExamsName
 
 from candidate.models import Candidate
 from .models import NtrcaResult
 from .forms import NtrcaForms, NtrcaMarkForms, NtrcaMarkFormset
 from .filters import CandidateFilter
 
-class NtrcaHomeView(View):
-    def get(self, request):
-        ntrca = NtrcaResult.objects.all()
+class ResultHomeView(View):
+    def get(self, request, exam_pk):
+        exam_name = ExamsName.objects.get(pk=exam_pk)
+        ntrca = NtrcaResult.objects.filter(
+            exam_name=exam_name
+        )
         filters = CandidateFilter(request.GET, queryset=ntrca)
         ntrca = filters.qs
         context = {
             'ntrca_all': ntrca,
-            'filter': filters
+            'filter': filters,
+            'object': exam_name
         }
         return render(request, 'view_result.html', context)
-    
-    def post(self, request):
-        pass
 
-class NtrcaDateBoard(View):
-    def get(self, request):
+
+class DateBoardView(View):
+    def get(self, request, pk):
+        exam_name = ExamsName.objects.get(pk=pk)
         form = NtrcaForms(request.POST)
-        context = {'form': form}
+        context = {
+            'form': form,
+            'object': exam_name
+        }
         return render(request, 'enter_roll.html', context)
     
-    def post(self, request):
+    def post(self, request, pk):
+        exam_name = ExamsName.objects.get(pk=pk)
         form = NtrcaForms(request.POST)
         date_of_interview = request.POST.get('interview_date' or None)
         board = request.POST.get('board' or None)
-        try:
-            candidate = Candidate.objects.filter(interview_date=date_of_interview, board=board)
-        except Exception as e:
-            print(f'candidate: {e}')
-            candidate = None
-        try:
-            ntrca_result = NtrcaResult.objects.filter(interview_date=date_of_interview, board=board)
-        except Exception as e:
-            print(f'ntrca_result: {e}')
-            ntrca_result = None
+        candidate = Candidate.objects.filter(
+            interview_date=date_of_interview, board=board,
+            exam_name=exam_name
+        )
         request.session['date_of_interview']=date_of_interview
         request.session['board']=board
         if candidate:
             if form.is_valid():
-                interview_date = form.cleaned_data['interview_date']
                 board = form.cleaned_data['board']
                 for can in candidate:
-                    ntrca_result = NtrcaResult.objects.update_or_create(
-                        interview_date=can.interview_date,
-                        board=can.board,
-                        roll=can.roll,
-                        name=can.name,
-                        father=can.father,
-                        mother=can.mother,
-                        subject_code=can.subject_code,
-                        invoice=can.invoice
-                    )
-                return redirect('ntrca_result_create')
+                    board = float(can.board)
+                    try:
+                        data = NtrcaResult.objects.get(roll=can.roll)
+                        print(f"Data Found {data.roll}")
+                    except Exception as e:
+                        data = NtrcaResult.objects.create(
+                            interview_date=can.interview_date,
+                            board=board,
+                            roll=can.roll,
+                            name=can.name,
+                            father=can.father,
+                            mother=can.mother,
+                            subject_code=can.subject_code,
+                            invoice=can.invoice,
+                            exam_name=exam_name
+                        )
+                        print(f"Data Create {data.roll}")
+                return redirect('markes_entry', pk=exam_name.pk)
             else:
                 context = {
                     'form': form,
-                    'error': 'You are already registered!'
+                    'error': 'You are already registered!',
+                    'object': exam_name
                     }
                 return render(request, 'enter_roll.html', context)
         else:
             context = {
                 'form': form,
-                'error': 'Invalid!'
+                'error': 'Invalid!',
+                'object': exam_name
                 }
             return render(request, 'enter_roll.html', context)
 
 
-class NtrcaCreateResult(View):
-    def get(self, request):
+class MarkesEntry(View):
+    def get(self, request, pk):
+        exam_name = ExamsName.objects.get(pk=pk)
         date_of_interview = request.session.get('date_of_interview')
         board = request.session.get('board')
-        candidate = NtrcaResult.objects.filter(interview_date=date_of_interview, board=board)
+        candidate = NtrcaResult.objects.filter(
+            interview_date=date_of_interview, board=float(board),
+            exam_name=exam_name
+        )
         formset = NtrcaMarkFormset(queryset=candidate)
         context = {
             'candidates': candidate,
             'formset': formset,
+            'object': exam_name
         }
         return render(request, 'enter_mark_copy.html', context)
 
-    def post(self, request):
+    def post(self, request, pk):
+        exam_name = ExamsName.objects.get(pk=pk)
         date_of_interview = request.session.get('date_of_interview')
         board = request.session.get('board')
-        candidate = NtrcaResult.objects.filter(interview_date=date_of_interview, board=board)
+        candidate = NtrcaResult.objects.filter(
+            interview_date=date_of_interview, board=float(board),
+            exam_name=exam_name
+        )
         formset = NtrcaMarkFormset(request.POST, queryset=candidate)
         for form in formset:
             if form.is_valid():
@@ -105,13 +120,12 @@ class NtrcaCreateResult(View):
                 candidate.comment = comment
                 candidate.total_number = total_number
                 candidate.save()
-        return redirect('ntrca_search_date')
+        return redirect('ntrca_search_date', pk=exam_name.pk)
         
 
 class UpdateCandidate(View):
     def get(self, request, pk):
         candidate = NtrcaResult.objects.get(pk=pk)
-        print(candidate)
         form = NtrcaMarkForms(instance=candidate)
         context = {
             'ntrca_result': candidate,
