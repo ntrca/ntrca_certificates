@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load crispy_forms_tags %}
+{% load crispy_forms_tags static %}
 
 {% block content %}
 <style>
@@ -8,6 +8,15 @@
         bottom: 0;
         right: 0;
         width: 100%;
+    }
+    .card-body{
+        text-align: center;
+    }
+    .card-body img{
+        height: 150px;
+    }
+    .card-body h3{
+        color: #444;
     }
 </style>
 <div class="container bg">
@@ -26,8 +35,8 @@
             <a href="{% url 'ntrca_district' obj.pk %}">
                 <div class="card my-3">
                     <div class="card-body">
-                        <h5 style="font-family: 'Roboto Slab'; text-align: center;">{{ obj.name }}</h5>
-                        <label for="exampleInputPassword1">{{ obj.examth }} {{ obj.name }} {{ obj.year }}</label>
+                        <img src="{% static 'img/giphy.gif' %}">
+                        <h3 for="exampleInputPassword1">{{ obj.examth }} {{ obj.name }} {{ obj.year }}</h3>
                     </div>
                 </div>
             </a>

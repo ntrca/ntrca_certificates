@@ -1,8 +1,7 @@
 import pandas as pd
 import os
 import datetime
-from django.shortcuts import HttpResponse
-from ntrca_app.models import NTRCACirtificate, ExamsName
+from ntrca_app.models import ExamsName
 from ntrca_result.models import NtrcaResult
 
 
