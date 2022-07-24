@@ -77,7 +77,7 @@
                             <td>{{ ntrca.v_number }}</td>
                             <td>{{ ntrca.total_number }}</td>
                             <td>{{ ntrca.comment }}</td>
-                            <td><a href="{% url 'ntrca_update' ntrca.pk %}"><i class="fas fa-edit"></i></a></td>
+                            <td><a href="{% url 'ntrca_update' ntrca.pk object.pk %}"><i class="fas fa-edit"></i></a></td>
                             
                         </tr>
                         {% endfor %}

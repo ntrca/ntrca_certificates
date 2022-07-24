@@ -124,16 +124,19 @@ class MarkesEntry(View):
         
 
 class UpdateCandidate(View):
-    def get(self, request, pk):
-        candidate = NtrcaResult.objects.get(pk=pk)
+    def get(self, request, pk, exam_pk):
+        exam_name = ExamsName.objects.get(pk=exam_pk)
+        candidate = NtrcaResult.objects.get(pk=pk, exam_name=exam_name)
         form = NtrcaMarkForms(instance=candidate)
         context = {
             'ntrca_result': candidate,
-            'formset': form
+            'formset': form,
+            'object': exam_name
         }
         return render(request, 'update_mark.html', context)
-    def post(self, request, pk):
-        candidate = NtrcaResult.objects.get(pk=pk)
+    def post(self, request, pk, exam_pk):
+        exam_name = ExamsName.objects.get(pk=exam_pk)
+        candidate = NtrcaResult.objects.get(pk=pk, exam_name=exam_name)
         form = NtrcaMarkForms(request.POST, instance=candidate)
         if form.is_valid():
             s_number = form.cleaned_data['s_number']
@@ -145,9 +148,10 @@ class UpdateCandidate(View):
             candidate.comment = comment
             candidate.total_number = total_number
             candidate.save()
-            return redirect(self.request.path_info)
+            return redirect('result_home', exam_pk=exam_name.pk)
         context = {
             'ntrca_result': candidate,
-            'formset': form
+            'formset': form,
+            'object': exam_name
         }
         return render(request, 'update_mark.html', context)

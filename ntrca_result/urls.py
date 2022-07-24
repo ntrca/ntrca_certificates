@@ -11,10 +11,9 @@ urlpatterns = [
         name="markes_entry"
         ),
     path(
-        'result-update/<int:pk>/', UpdateCandidate.as_view(), 
+        'result-update/<int:pk>/<int:exam_pk>/', UpdateCandidate.as_view(), 
         name="ntrca_update"
         ),
 
     path('export-data/', export_users_xls, name="export_users_xls"),
-    # path('get-data/', insert_data_to_mysql, name= "insert_data"),
 ]
