@@ -9,6 +9,7 @@ from django.contrib import messages
 
 from candidate.models import Candidate
 from .models import NTRCACirtificate, District, ExamsName
+from ntrca_result.models import NtrcaResult
 from .forms import DuplicateCertificateForm
 
 
@@ -190,10 +191,19 @@ class NTRCADuplicateCertificatePrintView(View):
 
 def update_data(request):
     exam_name = ExamsName.objects.get(pk=1)
-    total = 0
-    for obj in Candidate.objects.all():
+    ntrac_tesult = NtrcaResult.objects.all()
+    ntrca_cir = NTRCACirtificate.objects.all()
+    candidate = Candidate.objects.all()
+    for obj in ntrca_cir:
         obj.exam_name = exam_name
         obj.save()
-        total +=1
-        print(total)
+        print(obj)
+    for obj in ntrac_tesult:
+        obj.exam_name = exam_name
+        obj.save()
+        print(obj)
+    for obj in candidate:
+        obj.exam_name = exam_name
+        obj.save()
+        print(obj)
     return HttpResponse("Done")

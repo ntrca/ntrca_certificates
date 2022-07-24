@@ -6,8 +6,6 @@ from ntrca_app.models import NTRCACirtificate, ExamsName
 from ntrca_result.models import NtrcaResult
 
 
-
-
 def update_data():
     exam_name = ExamsName.objects.get(pk=1)
     data = pd.read_excel(os.path.join(os.getcwd(), "fixtures/result_16_pass_18560.csv")) # noqa
