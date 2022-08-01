@@ -1,17 +1,9 @@
 from django.contrib import admin
 from .models import (
-    NtrcaResult, NtrcaResultPdf, Subject, PostName,
+    NtrcaResultPdf, Subject, PostName,
     NTRCACirtificate, PostAndSubjectCode, District, Thana, PostOffice,
     DuplicateCertificate, DuplicateCertificateFile, ExamsName
 )
-
-class NtrcaMoelAdmin(admin.ModelAdmin):
-    list_display = [
-        'pk','roll','s_number', 'v_number',
-        'total_number','name','father','comment', 'interview_date'
-    ]
-
-admin.site.register(NtrcaResult, NtrcaMoelAdmin)
 
 
 class NtrcaResultPdfAdmin(admin.ModelAdmin):

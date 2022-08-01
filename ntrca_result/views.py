@@ -3,6 +3,7 @@ from django.views.generic import View
 from ntrca_app.models import ExamsName
 
 from candidate.models import Candidate
+from ntrca_app.models import NTRCACirtificate
 from .models import NtrcaResult
 from .forms import NtrcaForms, NtrcaMarkForms, NtrcaMarkFormset
 from .filters import CandidateFilter
@@ -64,7 +65,6 @@ class DateBoardView(View):
                             invoice=can.invoice,
                             exam_name=exam_name
                         )
-                        print(f"Data Create {data.roll}")
                 return redirect('markes_entry', pk=exam_name.pk)
             else:
                 context = {
@@ -120,8 +120,25 @@ class MarkesEntry(View):
                 candidate.comment = comment
                 candidate.total_number = total_number
                 candidate.save()
+                if exam_name.viva_pass == float(v_number):
+                    try:
+                        NTRCACirtificate.objects.get(
+                            roll=candidate.roll
+                        )
+                    except Exception as e:
+                        NTRCACirtificate.objects.create(
+                            exam_name=exam_name,
+                            roll=candidate.roll,
+                            subject_code=candidate.subject_code,
+                            name=candidate.name,
+                            ssc_result=candidate.s_result,
+                            hsc_result=candidate.h_result,
+                            invoice=candidate.invoice,
+                            dob=candidate.dob,
+                            viva_mark=total_number
+                        )
         return redirect('ntrca_search_date', pk=exam_name.pk)
-        
+
 
 class UpdateCandidate(View):
     def get(self, request, pk, exam_pk):
