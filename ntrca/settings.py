@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     # custom apps
     'ntrca_app',
     'ntrca_result',
-    'candidate'
+    'candidate',
+    'import_export'
 ]
 
 MIDDLEWARE = [

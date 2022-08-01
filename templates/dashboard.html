@@ -13,9 +13,9 @@
         text-align: center;
     }
     .card-body img{
-        height: 150px;
+        height: 100px;
     }
-    .card-body h3{
+    .card-body h5{
         color: #444;
     }
 </style>
@@ -31,12 +31,12 @@
 
         <!-- left -->
         {% for obj in exam_name %}
-        <div class="col-md-6">
+        <div class="col-md-4">
             <a href="{% url 'ntrca_district' obj.pk %}">
                 <div class="card my-3">
                     <div class="card-body">
-                        <img src="{% static 'img/giphy.gif' %}">
-                        <h3 for="exampleInputPassword1">{{ obj.examth }} {{ obj.name }} {{ obj.year }}</h3>
+                        <img src="{% static 'img/teacher.png' %}">
+                        <h5>{{ obj.examth }} {{ obj.name }} {{ obj.year }}</h5>
                     </div>
                 </div>
             </a>
