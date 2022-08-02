@@ -40,10 +40,14 @@ class NtrcaMarkForms(forms.ModelForm):
         super(NtrcaMarkForms, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_show_labels = False
+        self.fields['s_number'].required = False
+        self.fields['v_number'].required = False
 
     class Meta:
         model = NtrcaResult
-        fields = ['name', 'father', 'mother', 'roll', 's_number', 'v_number', 'total_number', 'comment']
+        fields = [
+            's_number', 'v_number', 'total_number', 'comment'
+        ]
 
         widgets = {
             's_number': forms.NumberInput(attrs={
@@ -74,36 +78,4 @@ class NtrcaMarkForms(forms.ModelForm):
                 'placeholder': 'Comment',
             }),
         }
-    # def clean_s_number(self):
-    #     s_number = self.cleaned_data.get('s_number')
-    #     if s_number and s_number <= 12:
-    #         raise ValidationError('Minimum 12 required')
-    #     return s_number
-        
-    # def clean_v_number(self):
-    #     v_number = self.cleaned_data.get('v_number')
-    #     if v_number and v_number <= 8:
-    #         raise ValidationError('Minimum 8 required')
-
-    #     return v_number
-
-    # def clean(self):
-    #     cleaned_data = super().clean()
-    #     s_number = cleaned_data.get('s_number')
-    #     v_number = cleaned_data.get('v_number')
-    #     if s_number:
-    #         if s_number > 12:
-    #             self.add_error(
-    #                 's_number', "Invalid Number"
-    #             )
-
-    #     if v_number:
-    #         if v_number > 8:
-    #             self.add_error(
-    #                 'v_number', "Invalid Number"
-    #             )
-        
 NtrcaMarkFormset = modelformset_factory(NtrcaResult, form=NtrcaMarkForms, extra=0)
-
-
-

@@ -4,6 +4,8 @@ from django.db import connections
 from django.views.generic import View
 from django.shortcuts import render
 from django.http import HttpResponse
+
+from ntrca_app.utilities import ExamsName
 from .models import Candidate
 
 def get_data():
@@ -84,7 +86,8 @@ class ImportCandidate(View):
                     father=row['father'], mother=row['mother'], s_exam=row['s_exam'],
                     s_result=row['s_result'], s_result_text=row['s_result_text'],
                     h_exam=row['h_exam'], h_result=row['h_result'], invoice=row['invoice'],
-                    h_result_text=row['h_result_text'], dob=row['dob']
+                    h_result_text=row['h_result_text'], dob=row['dob'],
+                    exam_name=ExamsName.objects.get(pk=1)
                 )
                 create_data += 1
                 print(create_data, "*" * 100)

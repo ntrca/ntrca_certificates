@@ -32,6 +32,11 @@ class NtrcaResult(models.Model):
     total_number = models.CharField(max_length=20, null=True, blank=True)
     comment = models.CharField(max_length=250, blank=True, null=True, default="")
 
+    def save(self, *args, **kwargs):
+        if self.s_number or self.v_number:
+            self.total_number = self.s_number + self.v_number
+        return super().save(*args, **kwargs)
+
     def __str__(self):
-        return str(self.name)
+        return f"{self.candidate} {self.id}"
 

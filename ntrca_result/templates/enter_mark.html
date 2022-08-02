@@ -63,42 +63,31 @@
                     {% csrf_token %}
 
                     <div class="card">
-                        {% comment %}
-                        <!-- {% if forms.errors %}
-                            {% for field in forms %}
-                                {% for error in field.errors %}
-                                    <div class="alert alert-danger">
-                                        <strong>{{field.label }}: {{ error|escape }}</strong>
-                                    </div>
-                                {% endfor %}
-                            {% endfor %}
-                        {% endif %} -->
-                        {% endcomment %}
                       <div class="card-body">
                         {{ formset.management_form }}
-                        {{ formset.errors }}
                         {{ formset.non_form_errors }}
-                        
                             <div class="inline {{ formset.prefix }} mb-5">
                                 <div class="row mx-0">
                                     <div class="col-lg-12 px-0">
-                                        <table>
+                                        <table class="table">
                                             <tr>
+                                                <th>SL</th>
                                                 <th>Name</th>
                                                 <th>Father</th>
                                                 <th>Mother</th>
                                                 <th>Roll</th>
-                                                <th>C Number</th>
-                                                <th>V number</th>
+                                                <th>Certificate Mark</th>
+                                                <th>Viva Mark</th>
                                                 <th>Comment</th>
                                             </tr>
-                                            {% for form in formset %}
+                                            {% for form, data in data_and_form %}
                                             {{ form.id }}
                                             <tr>
-                                                <td class="name">{{ form.name }}</td>
-                                                <td class="father">{{ form.father }}</td>
-                                                <td class="mother">{{ form.mother }}</td>
-                                                <td class="roll">{{ form.roll }}</td>
+                                                <td>{{ forloop.counter }}</td>
+                                                <td class="name">{{ data.candidate.name }}</td>
+                                                <td class="father">{{ data.candidate.father }}</td>
+                                                <td class="mother">{{ data.candidate.mother }}</td>
+                                                <td class="roll">{{ data.candidate.roll }}</td>
                                                 <td>{{ form.s_number|as_crispy_field }}</td>
                                                 <td>{{ form.v_number|as_crispy_field }}</td>
                                                 <td>{{ form.comment|as_crispy_field }}</td>
@@ -108,9 +97,9 @@
                                     </div>
                                 </div>
                             </div>
+                            <input class="btn btn-success w-50" type="submit" value="submit">
                       </div>
                   </div>
-                    <input type="submit" value="submit">
                 </form>
             </div>
             </div>

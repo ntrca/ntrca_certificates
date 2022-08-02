@@ -57,6 +57,9 @@ class DateBoardView(View):
                         data = NtrcaResult.objects.create(
                             exam_name=exam_name,
                             roll=can.roll,
+                            candidate=can,
+                            interview_date=can.interview_date,
+                            board=can.board,
                         )
                 return redirect('markes_entry', pk=exam_name.pk)
             else:
@@ -81,56 +84,52 @@ class MarkesEntry(View):
         date_of_interview = request.session.get('date_of_interview')
         board = request.session.get('board')
         candidate = NtrcaResult.objects.filter(
-            interview_date=date_of_interview, board=float(board),
+            interview_date=date_of_interview, board=board,
             exam_name=exam_name
         )
         formset = NtrcaMarkFormset(queryset=candidate)
+        data_and_form = zip(formset, candidate)
         context = {
             'candidates': candidate,
             'formset': formset,
-            'object': exam_name
+            'object': exam_name,
+            'data_and_form': data_and_form
         }
-        return render(request, 'enter_mark_copy.html', context)
+        return render(request, 'enter_mark.html', context)
 
     def post(self, request, pk):
         exam_name = ExamsName.objects.get(pk=pk)
         date_of_interview = request.session.get('date_of_interview')
         board = request.session.get('board')
         candidate = NtrcaResult.objects.filter(
-            interview_date=date_of_interview, board=float(board),
+            interview_date=date_of_interview, board=board,
             exam_name=exam_name
         )
         formset = NtrcaMarkFormset(request.POST, queryset=candidate)
-        for form in formset:
-            if form.is_valid():
-                s_number = form.cleaned_data['s_number']
-                v_number = form.cleaned_data['v_number']
-                comment = form.cleaned_data['comment']
-                total_number = float(s_number) + float(v_number)
-                candidate = form.save(commit=False)
-                candidate.s_number = s_number
-                candidate.v_number = v_number
-                candidate.comment = comment
-                candidate.total_number = total_number
-                candidate.save()
-                if exam_name.viva_pass == float(v_number):
+        data_and_form = zip(formset, candidate)
+        if formset.is_valid():
+            for form in formset:
+                obj = form.save()
+                viva_mark = form.cleaned_data['v_number']
+                if viva_mark and float(exam_name.viva_pass) <= float(viva_mark):
                     try:
                         NTRCACirtificate.objects.get(
-                            roll=candidate.roll
+                            result__id=obj.id
                         )
                     except Exception as e:
+                        print(e)
                         NTRCACirtificate.objects.create(
-                            exam_name=exam_name,
-                            roll=candidate.roll,
-                            subject_code=candidate.subject_code,
-                            name=candidate.name,
-                            ssc_result=candidate.s_result,
-                            hsc_result=candidate.h_result,
-                            invoice=candidate.invoice,
-                            dob=candidate.dob,
-                            viva_mark=total_number
+                            result=obj, 
                         )
-        return redirect('ntrca_search_date', pk=exam_name.pk)
+            return redirect('ntrca_search_date', pk=exam_name.pk)
+        else:
+            context = {
+                'candidates': candidate,
+                'formset': formset,
+                'object': exam_name,
+                'data_and_form': data_and_form
+            }
+            return render(request, 'enter_mark.html', context)
 
 
 class UpdateCandidate(View):
