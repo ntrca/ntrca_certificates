@@ -11,6 +11,7 @@ GENDER = (
 
 
 class Candidate(models.Model):
+    id = models.AutoField(primary_key=True)
     invoice = models.CharField(max_length=20, blank=True, null=True)
     exam_name = models.ForeignKey(
         ExamsName, on_delete=models.SET_NULL, null=True, blank=True,

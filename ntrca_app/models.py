@@ -5,6 +5,7 @@ from ntrca_result.models import NtrcaResult
 
 
 class NtrcaResultPdf(models.Model):
+    id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=200, blank=True, null=True)
     roll = models.PositiveIntegerField(null=True)
     subject_code = models.IntegerField(blank=True, null=True)
@@ -24,6 +25,7 @@ GENDER = (
 
 
 class NTRCACirtificate(models.Model):
+    id = models.AutoField(primary_key=True)
     result = models.ForeignKey(
         NtrcaResult, on_delete=models.CASCADE, null=True, blank=True
     )
@@ -74,6 +76,7 @@ class NTRCACirtificate(models.Model):
 
 class DuplicateCertificate(models.Model):
     """ NTRCA Duplicate Certificate Print Information"""
+    id = models.AutoField(primary_key=True)
     ntrca_certificate = models.ForeignKey(
         NTRCACirtificate, on_delete=models.CASCADE,
         related_name='duplicate_certificates'
@@ -89,6 +92,7 @@ class DuplicateCertificate(models.Model):
 
 class DuplicateCertificateFile(models.Model):
     """ Duplicate certificate files model """
+    id = models.AutoField(primary_key=True)
     duplicate_certificate = models.ForeignKey(
         DuplicateCertificate, on_delete=models.CASCADE, null=True,
         related_name='duplicate_certificate_files'
@@ -102,6 +106,7 @@ class DuplicateCertificateFile(models.Model):
 
 
 class PostName(models.Model):
+    id = models.AutoField(primary_key=True)
     subject_code = models.IntegerField(blank=True, null=True)
     post_code = models.IntegerField(null=True, blank=True)
     post_name = models.CharField(max_length=255, null=True)
@@ -111,6 +116,7 @@ class PostName(models.Model):
 
 
 class PostAndSubjectCode(models.Model):
+    id = models.AutoField(primary_key=True)
     subject_name = models.CharField(max_length=255)
     subject_code = models.IntegerField()
     post_code = models.IntegerField()
@@ -125,6 +131,7 @@ class PostAndSubjectCode(models.Model):
 
 
 class StudentValidData(models.Model):
+    id = models.AutoField(primary_key=True)
     roll = models.PositiveIntegerField(null=True)
     subject_code = models.IntegerField(blank=True, null=True)
     score = models.IntegerField(null=True, blank=True)
@@ -136,6 +143,7 @@ class StudentValidData(models.Model):
         return str(self.roll)
 
 class TotalStudent(models.Model):
+    id = models.AutoField(primary_key=True)
     roll = models.PositiveIntegerField(null=True)
     subject_code = models.IntegerField(blank=True, null=True)
     score = models.IntegerField(null=True, blank=True)
@@ -147,6 +155,7 @@ class TotalStudent(models.Model):
         return str(self.roll)
 
 class StudentWrongData(models.Model):
+    id = models.AutoField(primary_key=True)
     roll = models.PositiveIntegerField(null=True)
     subject_code = models.IntegerField(blank=True, null=True)
     score = models.IntegerField(null=True, blank=True)

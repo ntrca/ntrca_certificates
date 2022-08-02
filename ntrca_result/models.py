@@ -3,6 +3,7 @@ from ntrca_app.utilities import ExamsName
 from candidate.models import Candidate
 
 class NtrcaResult(models.Model):
+    id = models.AutoField(primary_key=True)
     candidate = models.ForeignKey(
         Candidate, on_delete=models.CASCADE, null=True, blank=True
     )
