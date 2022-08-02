@@ -263,6 +263,12 @@ def update_cirtificate_to_candidate(request):
             obj.written_number = cirti.written_number
             obj.subject_name = cirti.subject_name
             obj.reg = f"162019{cirti.reg}"
+            obj.gender = cirti.gender
+            obj.institute_type = cirti.institute_type
+            obj.post_name = cirti.post_name
+            obj.religion = cirti.religion
+            obj.nid = cirti.nid
+            obj.post_code = cirti.post_code
             obj.save()
         except Exception as e:
             print(e)
