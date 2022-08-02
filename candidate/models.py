@@ -3,6 +3,21 @@ from django.db import models
 from ntrca_app.utilities import ExamsName, District, Thana, PostOffice
 
 
+def registration(number):
+    if number <= 9:
+        return f"{'00000' + str(number)}"
+    elif number <= 99:
+        return f"{'0000' + str(number)}"
+    elif number <= 999:
+        return f"{'000' + str(number)}"
+    elif number <= 9999:
+        return f"{'00' + str(number)}"
+    elif number <= 99990:
+        return f"{'0' + str(number)}"
+    else:
+        return number
+
+
 GENDER = (
     (1, 'Male'),
     (2, 'Female'),
@@ -49,10 +64,15 @@ class Candidate(models.Model):
     permanent_post_office = models.ForeignKey(PostOffice, on_delete=models.CASCADE,
         null=True, related_name='post')
 
+    # def save(self, *args, **kwargs):
+    #     if not self.reg and self.exam_name.year and self.exam_name.examth:
+    #         number = Candidate.objects.all().count()
+    #         reg_no = registration(number)
+    #         self.reg = f"{self.exam_name.examth}{self.exam_name.year}{reg_no}"
+    #     return super().save(*args, **kwargs)
 
     class Meta:
         ordering = ['roll']
-
 
     def __str__(self):
         return self.invoice

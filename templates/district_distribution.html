@@ -56,7 +56,7 @@
                 <h5>Non Government Teachers' Registration and Certification Authority (NTRCA)</h5>
                 <h6>Distribution Register ( 16 th NTRCA exam )</h6>
                 <p style="font-weight: 600; text-transform: uppercase; font-size: 14px;">{{district}}</p>
-                <p>{{ data.subject_name }}({{ data.subject_code }})</p>
+                <p>{{ data.result.candidate.subject_name }}({{ data.subject_code }})</p>
             {% endwith %}
             <table width="100%" class="table table-bordered table-hover mt-2">
                 <thead>
@@ -78,31 +78,35 @@
                     {% for data in thana %}
                     <tr>
                         <th scope="row">{{ forloop.counter }}</th>
-                        <td>{{ data.roll }}</td>
+                        <td>{{ data.result.candidate.roll }}</td>
                         <td>
-                            Name: {{ data.name }}<br>
-                            Father'S Name: {{ data.father_name }}<br>
-                            Mother'S Name: {{ data.mother_name }}<br>
+                            Name: {{ data.result.candidate.name }}<br>
+                            Father'S Name: {{ data.result.candidate.father }}<br>
+                            Mother'S Name: {{ data.result.candidate.mother }}<br>
                         </td>
                         <td>
-                            Vill/Holding: {{ data.permanent_vill }}<br>
-                            P/O: {{ data.permanent_post_office }}<br>
-                            P/S: {{ data.permanent_police_station }}<br>
-                            Dist: {{ data.permanent_district }}<br>
+                            Vill/Holding: {{ data.result.candidate.permanent_vill }}<br>
+                            P/O: {{ data.result.candidate.permanent_post_office }}<br>
+                            P/S: {{ data.result.candidate.permanent_police_station }}<br>
+                            Dist: {{ data.result.candidate.permanent_district }}<br>
                         </td>
                         <td><img style="width: 50px;" src="/static/photo/{{ data.invoice }}.jpg" alt=""></td>
                         <td>
-                            SSC Result: {{ data.ssc_result }}<br>
-                            HSC Result: {{ data.hsc_result }}
+                            SSC Result: {{ data.result.candidate.s_result }}<br>
+                            HSC Result: {{ data.result.candidate.h_result }}
                         </td>
                         <td>
-                            {{ data.dob| date:"d- F- Y" }}<br>
-                            Written: {{ data.written_number }}<br>
-                            Viva: {{ data.viva_mark }}<br>
+                            {{ data.result.candidate.dob| date:"d- F- Y" }}<br>
+                            Written: {{ data.result.candidate.written_number }}<br>
+                            Viva: {{ data.result.v_number }}<br>
                         </td>
                         <td style="padding: 0;">
                             <hr>
+                            {% if data.reg %}
                             162019{{ data.reg }}
+                            {% else %}
+                            {{ data.result.candidate.reg }}
+                            {% endif %}
                         </td>
                         <td></td>
                     </tr>

@@ -256,12 +256,13 @@ def update_cirtificate_to_candidate(request):
             district = District.objects.get(pk=cirti.permanent_district.pk)
             thana = Thana.objects.get(pk=cirti.permanent_police_station.pk)
             post_office = PostOffice.objects.get(pk=cirti.permanent_post_office.pk)
-            print(cirti, "-" * 100)
             obj.permanent_vill = cirti.permanent_vill
             obj.permanent_district = district
             obj.permanent_police_station = thana
             obj.permanent_post_office = post_office
             obj.written_number = cirti.written_number
+            obj.subject_name = cirti.subject_name
+            obj.reg = f"162019{cirti.reg}"
             obj.save()
         except Exception as e:
             print(e)
