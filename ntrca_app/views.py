@@ -10,7 +10,7 @@ from django.contrib import messages
 
 from candidate.models import Candidate
 from .models import NTRCACirtificate
-from .utilities import District, ExamsName
+from .utilities import District, ExamsName, Thana, PostOffice
 from ntrca_result.models import NtrcaResult
 from .forms import DuplicateCertificateForm
 
@@ -244,5 +244,30 @@ def update_data(request):
         obj.exam_name = exam_name
         obj.result = result
         obj.save()
+        print(obj)
+    return HttpResponse("Done")
+
+
+def update_cirtificate_to_candidate(request):
+    for obj in Candidate.objects.all():
+        print(obj.roll, "*" * 100)
+        try:
+            cirti = NTRCACirtificate.objects.get(roll=obj.roll)
+            district = District.objects.get(pk=cirti.permanent_district.pk)
+            thana = Thana.objects.get(pk=cirti.permanent_police_station.pk)
+            post_office = PostOffice.objects.get(pk=cirti.permanent_post_office.pk)
+            print(cirti, "-" * 100)
+            obj.permanent_vill = cirti.permanent_vill
+            obj.permanent_district = district
+            obj.permanent_police_station = thana
+            obj.permanent_post_office = post_office
+            obj.written_number = cirti.written_number
+            obj.save()
+        except Exception as e:
+            print(e)
+            cirti = None
+            district = None
+            thana = None
+            post_office = None
         print(obj)
     return HttpResponse("Done")

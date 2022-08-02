@@ -4,13 +4,14 @@ from .views import (
     NtrcaInputDistrict, NTRCACirtificateDownloadView,
     NtrcaSingleData, NtrcaDistrictDistribution, update_data,
     NTRCADuplicateCertificatePrintView, DashboardView,
-    update_result
+    update_result, update_cirtificate_to_candidate
 )
 
 urlpatterns = [
     path('', DashboardView.as_view(), name="dashboard"),
     path('update/data/', update_data, name="update_data"),
     path('update/result/', update_result, name="update_result"),
+    path('update/cirtificate/to/candidate/', update_cirtificate_to_candidate, name="update_cirtificate_to_candidate"),
     path(
         'ntrca/district/<int:pk>/', NtrcaInputDistrict.as_view(),
         name="ntrca_district"
