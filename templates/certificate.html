@@ -218,7 +218,7 @@
 						<h6 style="font-size: 22px;">16th Teachers' Registration Examination 2019</h6>
 					</div>
 					<div class="image">
-						<img src="/static/photo/{{ data.invoice }}.jpg" alt="img " height="120px" width="120px" />
+						<img src="/static/photo/{{ data.result.candidate.invoice }}.jpg" alt="img " height="120px" width="120px" />
 					</div>
 					<div>
 						<div class="clr"></div>
@@ -226,12 +226,12 @@
 					<!-- certify section-->
 					<div class="certify">
 						<p style="font-size: 18px;">
-							This is to Certify that Mr./Ms. <span style="font-family: Gabriola; font-size: 24px;"><b>{{ data.name|title }}</b></span>, Son/Daughter of:
-							<span style="font-family: Gabriola; font-size: 24px;"><b>{{ data.father_name|title }}</b></span> and <span style="font-family: Gabriola; font-size: 24px;"><b>{{ data.mother_name|title }}</b></span>, Date of birth:
-							<span style="font-family: Gabriola; font-size: 24px;"><b>{{ data.dob| date:"d-F-Y" }}</b></span>, Village/Holding: <span style="font-family: Gabriola; font-size: 24px;"><b>{{ data.permanent_vill|title }}</b></span>,
-							Post Office: <span style="font-family: Gabriola; font-size: 24px;"><b>{{ data.permanent_post_office|title }}</b></span>, Upazila/Metropolitan Area:
-							<span style="font-family: Gabriola; font-size: 24px;"><b>{{ data.permanent_police_station|title }}</b></span>, District: <span style="font-family: Gabriola; font-size: 24px;"><b>{{ data.permanent_district|title }}</b></span>, bearing
-							Roll Number: <span style="font-family: Gabriola; font-size: 28px;"><b>{{ data.roll }}</b></span>
+							This is to Certify that Mr./Ms. <span style="font-family: Gabriola; font-size: 24px;"><b>{{ data.result.candidate.name|title }}</b></span>, Son/Daughter of:
+							<span style="font-family: Gabriola; font-size: 24px;"><b>{{ data.result.candidate.father|title }}</b></span> and <span style="font-family: Gabriola; font-size: 24px;"><b>{{ data.result.candidate.mother|title }}</b></span>, Date of birth:
+							<span style="font-family: Gabriola; font-size: 24px;"><b>{{ data.result.candidate.dob| date:"d-F-Y" }}</b></span>, Village/Holding: <span style="font-family: Gabriola; font-size: 24px;"><b>{{ data.result.candidate.permanent_vill|title }}</b></span>,
+							Post Office: <span style="font-family: Gabriola; font-size: 24px;"><b>{{ data.result.candidate.permanent_post_office|title }}</b></span>, Upazila/Metropolitan Area:
+							<span style="font-family: Gabriola; font-size: 24px;"><b>{{ data.result.candidate.permanent_police_station|title }}</b></span>, District: <span style="font-family: Gabriola; font-size: 24px;"><b>{{ data.result.candidate.permanent_district|title }}</b></span>, bearing
+							Roll Number: <span style="font-family: Gabriola; font-size: 28px;"><b>{{ data.result.candidate.roll }}</b></span>
 							has passed 16th Teachers' Registration Examination.
 						</p>
 						
@@ -240,9 +240,9 @@
 			
 					<!-- post-section -->
 					<div class="post-section">
-							<p><strong>Subject :</strong> <span style="margin-left: 10px; font-size: 14px;">{{ data.subject_name }}</span></p>
-							<p><strong>Post :</strong> <span style="margin-left: 10px; font-size: 14px;">{{ data.post_name }}</span></p>
-							<p><strong>Type of Non-Government Educational Institution(s) :</strong> <span style="margin-left: 10px; font-size: 14px;">{{ data.institute_type }}</span></p>
+							<p><strong>Subject :</strong> <span style="margin-left: 10px; font-size: 14px;">{{ data.result.candidate.subject_name }}</span></p>
+							<p><strong>Post :</strong> <span style="margin-left: 10px; font-size: 14px;">{{ data.result.candidate.post_name }}</span></p>
+							<p><strong>Type of Non-Government Educational Institution(s) :</strong> <span style="margin-left: 10px; font-size: 14px;">{{ data.result.candidate.institute_type }}</span></p>
 						
 						<div class="clr"></div>
 					</div>
@@ -266,12 +266,12 @@
 								<tr>
 									<td>Optional</td>
 									<td>100</td>
-									<td>{{ data.written_number }}</td>
+									<td>{{ data.result.candidate.written_number }}</td>
 								</tr>
 								<tr>
 									<td>Viva‑Voce</td>
 									<td>20</td>
-									<td>{{ data.total_number }}</td>
+									<td>{{ data.result.total_number }}</td>
 								</tr>
 							</table>
 						</div>
