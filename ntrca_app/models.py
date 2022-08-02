@@ -1,8 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from ntrca_app.utilities import ExamsName, District, Thana, PostOffice
-
-
+from ntrca_result.models import NtrcaResult
 
 
 class NtrcaResultPdf(models.Model):
@@ -25,6 +24,9 @@ GENDER = (
 
 
 class NTRCACirtificate(models.Model):
+    result = models.ForeignKey(
+        NtrcaResult, on_delete=models.CASCADE, null=True, blank=True
+    )
     invoice = models.CharField(max_length=200, null=True)
     exam_name = models.ForeignKey(
         ExamsName, on_delete=models.SET_NULL, null=True, blank=True,

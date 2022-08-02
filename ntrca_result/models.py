@@ -1,7 +1,11 @@
 from django.db import models
 from ntrca_app.utilities import ExamsName
+from candidate.models import Candidate
 
 class NtrcaResult(models.Model):
+    candidate = models.ForeignKey(
+        Candidate, on_delete=models.CASCADE, null=True, blank=True
+    )
     roll = models.PositiveIntegerField(unique=True, null=True)
     exam_name = models.ForeignKey(
         ExamsName, on_delete=models.SET_NULL, null=True, blank=True,
