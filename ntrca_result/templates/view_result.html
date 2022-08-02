@@ -68,11 +68,11 @@
                         
                         {% for ntrca in ntrca_all %}
                         <tr>
-                            <td>{{ ntrca.roll }}</td>
-                            <td>{{ ntrca.name }}</td>
-                            <td>{{ ntrca.father }}</td>
-                            <td>{{ ntrca.mother }}</td>
-                            <td>{{ ntrca.subject_code }}</td>
+                            <td>{{ ntrca.candidate.roll }}</td>
+                            <td>{{ ntrca.candidate.name }}</td>
+                            <td>{{ ntrca.candidate.father }}</td>
+                            <td>{{ ntrca.candidate.mother }}</td>
+                            <td>{{ ntrca.candidate.subject_code }}</td>
                             <td>{{ ntrca.s_number }}</td>
                             <td>{{ ntrca.v_number }}</td>
                             <td>{{ ntrca.total_number }}</td>

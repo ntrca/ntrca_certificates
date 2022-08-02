@@ -55,15 +55,8 @@ class DateBoardView(View):
                         print(f"Data Found {data.roll}")
                     except Exception as e:
                         data = NtrcaResult.objects.create(
-                            interview_date=can.interview_date,
-                            board=board,
+                            exam_name=exam_name,
                             roll=can.roll,
-                            name=can.name,
-                            father=can.father,
-                            mother=can.mother,
-                            subject_code=can.subject_code,
-                            invoice=can.invoice,
-                            exam_name=exam_name
                         )
                 return redirect('markes_entry', pk=exam_name.pk)
             else:
