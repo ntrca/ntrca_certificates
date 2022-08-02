@@ -3,12 +3,14 @@ from django.urls import path
 from .views import (
     NtrcaInputDistrict, NTRCACirtificateDownloadView,
     NtrcaSingleData, NtrcaDistrictDistribution, update_data,
-    NTRCADuplicateCertificatePrintView, DashboardView
+    NTRCADuplicateCertificatePrintView, DashboardView,
+    update_result
 )
 
 urlpatterns = [
     path('', DashboardView.as_view(), name="dashboard"),
-    path('update/data', update_data, name="update_data"),
+    path('update/data/', update_data, name="update_data"),
+    path('update/result/', update_result, name="update_result"),
     path(
         'ntrca/district/<int:pk>/', NtrcaInputDistrict.as_view(),
         name="ntrca_district"
@@ -25,7 +27,7 @@ urlpatterns = [
         NtrcaDistrictDistribution.as_view(), 
         name="ntrca_district_distribution"
     ),
-    path('ntrca/single/duplicate/certificate/', 
+    path('ntrca/single/duplicate/certificate/<int:pk>/', 
         NTRCADuplicateCertificatePrintView.as_view(), 
         name="ntrca_duplicate_certificate"
     ),
