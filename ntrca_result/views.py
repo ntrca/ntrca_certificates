@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.generic import View
-from ntrca_app.models import ExamsName
+from ntrca_app.utilities import ExamsName
 
 from candidate.models import Candidate
 from ntrca_app.models import NTRCACirtificate

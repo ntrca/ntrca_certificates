@@ -8,7 +8,8 @@ from django.core.paginator import Paginator
 from django.contrib import messages
 
 from candidate.models import Candidate
-from .models import NTRCACirtificate, District, ExamsName
+from .models import NTRCACirtificate
+from .utilities import District, ExamsName
 from ntrca_result.models import NtrcaResult
 from .forms import DuplicateCertificateForm
 

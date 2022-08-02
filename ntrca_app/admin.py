@@ -1,9 +1,10 @@
 from django.contrib import admin
 from .models import (
-    NtrcaResultPdf, Subject, PostName,
-    NTRCACirtificate, PostAndSubjectCode, District, Thana, PostOffice,
-    DuplicateCertificate, DuplicateCertificateFile, ExamsName
+    NtrcaResultPdf, PostName,
+    NTRCACirtificate, PostAndSubjectCode,
+    DuplicateCertificate, DuplicateCertificateFile
 )
+from .utilities import Subject, ExamsName, District, Thana, PostOffice
 
 
 class NtrcaResultPdfAdmin(admin.ModelAdmin):

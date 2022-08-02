@@ -1,6 +1,6 @@
 from django.db import models
 
-from ntrca_app.models import ExamsName
+from ntrca_app.utilities import ExamsName
 
 
 class Candidate(models.Model):

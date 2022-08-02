@@ -1,7 +1,7 @@
 import pandas as pd
 import os
 import datetime
-from ntrca_app.models import ExamsName
+from ntrca_app.utilities import ExamsName
 from ntrca_result.models import NtrcaResult
 
 

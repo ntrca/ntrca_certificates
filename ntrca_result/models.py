@@ -1,5 +1,5 @@
 from django.db import models
-from ntrca_app.models import ExamsName
+from ntrca_app.utilities import ExamsName
 
 class NtrcaResult(models.Model):
     roll = models.PositiveIntegerField(unique=True, null=True)
