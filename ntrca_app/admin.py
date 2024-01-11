@@ -1,4 +1,7 @@
 from django.contrib import admin
+from import_export.admin import (
+    ImportExportModelAdmin, ImportExportActionModelAdmin
+)
 from .models import (
     NtrcaResultPdf, PostName,
     NTRCACirtificate, PostAndSubjectCode,
@@ -34,9 +37,9 @@ class DuplicateCertificateInline(admin.TabularInline):
     extra = 0
     readonly_fields = ['created', 'updated']
 
-class NTRCACirtificateAdmin(admin.ModelAdmin):
+class NTRCACirtificateAdmin(ImportExportModelAdmin, ImportExportActionModelAdmin, admin.ModelAdmin):
     list_display = [
-    'invoice','name', 'roll', 'reg', 'subject_code', 'post_code', 'subject_name',
+    'id', 'invoice','name', 'roll', 'reg', 'subject_code', 'post_code', 'subject_name',
     'total_number',
     ]
     list_filter = ['subject_code']

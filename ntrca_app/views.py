@@ -155,11 +155,10 @@ class NTRCACirtificateDownloadView(View):
         template_name = 'certificate.html'
         all_district = request.session.get('all_district')
         page_obj = None
-        print(all_district, "*" * 100)
         if all_district:
             qs = NTRCACirtificate.objects.filter(
-                result__candidate__permanent_district__name=all_district,
-                result__candidate__exam_name=exam_name
+                permanent_district__name=all_district,
+                exam_name=exam_name
             )
 
             paginator = Paginator(qs, 100)
