@@ -27,9 +27,7 @@ admin.site.register(Subject, SubjectAdmin)
 
 
 class ExamsNameAdmin(admin.ModelAdmin):
-    list_display = [
-    'code','name',
-    ]
+    list_display = ['id', 'code','name']
 admin.site.register(ExamsName, ExamsNameAdmin)
 
 class DuplicateCertificateInline(admin.TabularInline):

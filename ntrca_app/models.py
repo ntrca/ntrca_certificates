@@ -55,8 +55,7 @@ class NTRCACirtificate(models.Model):
         null=True, related_name='permanent_district')
     permanent_police_station = models.ForeignKey(Thana, on_delete=models.CASCADE,
         null=True, related_name='permanent_thana')
-    permanent_post_office = models.ForeignKey(PostOffice, on_delete=models.CASCADE,
-        null=True, related_name='permanent_post')
+    post_office_name = models.CharField(max_length=255, null=True, blank=True)
     viva_mark = models.IntegerField(null=True, blank=True)
     ssc_result = models.DecimalField(null=True, decimal_places=2, max_digits=5, blank=True)
     hsc_result = models.DecimalField(null=True, decimal_places=2, max_digits=5, blank=True)

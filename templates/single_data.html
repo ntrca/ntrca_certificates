@@ -214,14 +214,14 @@
 	<div class="wrapper_full header_part">
 		<div class="wrapper">
 			<div class="reg-no">
-				<p>Reg. No. 162019{{ data.reg }}</p>
+				<p>Reg. No. {{ data.exam_name.reg_prefixed }}{{ data.reg }}</p>
 			</div>
 			<div class="file-header" style="font-family: Certificate;">
 				<h3>Certificate</h3>
-				<h6 style="font-size: 22px;">16th Teachers' Registration Examination 2019</h6>
+				<h6 style="font-size: 22px;">{{ data.exam_name.examth }} Teachers' Registration Examination {{ data.exam_name.year }}</h6>
 			</div>
 			<div class="image">
-				<img src="/static/photo/{{ data.invoice }}.jpg" alt="img " height="120px" width="120px" />
+				<img src="/static/{{ data.exam_name.examth }}/{{ data.invoice }}.jpg" alt="img " height="120px" width="120px" />
 			</div>
 			<div>
 				<div class="clr"></div>
@@ -235,7 +235,7 @@
 					Post Office: <span style="font-family: Gabriola; font-size: 24px;"><b>{{ data.permanent_post_office|title }}</b></span>, Upazila/Metropolitan Area:
 					<span style="font-family: Gabriola; font-size: 24px;"><b>{{ data.permanent_police_station|title }}</b></span>, District: <span style="font-family: Gabriola; font-size: 24px;"><b>{{ data.permanent_district|title }}</b></span>, bearing
 					Roll Number: <span style="font-family: Gabriola; font-size: 28px;"><b>{{ data.roll }}</b></span>
-					has passed 16th Teachers' Registration Examination.
+					has passed {{ data.exam_name.examth }} Teachers' Registration Examination.
 				</p>
 			<div class="clr"></div>
 			</div>
@@ -254,7 +254,7 @@
 				<div class="qr">
 					<p style="margin-bottom: 10px;"><strong>Marks Obtained :</strong></p>
 					<img
-						src="https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=16th Teachers' Registration Examination 2019 | Name: {{ data.name }} | Father's Name: {{ data.father_name }} | Mother's Name: {{ data.mother_name }} | Roll: {{ data.roll }} | Reg: 162019{{ data.reg }} | Optional Marks: {{ data.written_number }} | Institution's Type(s): {{ data.institute_type }}"
+						src="https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl={{ data.exam_name.name }} | Name: {{ data.name }} | Father's Name: {{ data.father_name }} | Mother's Name: {{ data.mother_name }} | Roll: {{ data.roll }} | Reg: {{ data.exam_name.reg_prefixed }}{{ data.reg }} | Optional Marks: {{ data.written_number }} | Institution's Type(s): {{ data.institute_type }}"
 						alt="qrcode"
 					/>
 				</div>
@@ -294,7 +294,7 @@
 					</div>
 				</div>
 				<div class="date">
-					<p style="font-size: 12px;">Result published on: Dhaka, 17 October, 2021</p>
+					<p style="font-size: 12px;">Result published on: Dhaka, {{ data.exam_name.publish_date }}</p>
 				</div>
 				<div class="clr"></div>
 			</div>

@@ -8,4 +8,5 @@ urlpatterns = [
     path('', include('ntrca_app.urls')),
     path('candidate/', include('candidate.urls')),
     path('ntrca_result/', include('ntrca_result.urls')),
+    path('import/', include('import.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
