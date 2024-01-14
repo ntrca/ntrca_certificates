@@ -40,7 +40,7 @@ class NTRCACirtificateAdmin(ImportExportModelAdmin, ImportExportActionModelAdmin
     'id', 'invoice','name', 'roll', 'reg', 'subject_code', 'post_code', 'subject_name',
     'total_number',
     ]
-    list_filter = ['subject_code']
+    list_filter = ['subject_code', 'exam_name__name']
     search_fields = ['roll', 'name', 'invoice']
     inlines = [
         DuplicateCertificateInline,
@@ -66,16 +66,14 @@ admin.site.register(PostAndSubjectCode, PostAndSubjectCodeAdmin)
 
 
 class DistrictAdmin(admin.ModelAdmin):
-    list_display = [
-    'name'
-    ]
+    list_display = ['name', 'code']
 admin.site.register(District, DistrictAdmin)
 
 
 class ThanaAdmin(admin.ModelAdmin):
-    list_display = [
-    'name', 'district'
-    ]
+    list_display = ['name', 'code', 'district']
+    list_filter = ('district__name', )
+
 admin.site.register(Thana, ThanaAdmin)
 
 

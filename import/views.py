@@ -1,9 +1,9 @@
 import os
-from django.shortcuts import HttpResponse
-from django.views import View
-from ntrca_app.models import District, Thana
-
 import pandas as pd
+from django.shortcuts import HttpResponse, render
+from django.views import View
+from ntrca_app.models import District, Thana, NTRCACirtificate, ExamsName
+from ntrca_app.views import registration
 
 
 class UpdateDistrict(View):
@@ -12,15 +12,56 @@ class UpdateDistrict(View):
         data_to_dict = data.to_dict(orient='records')
         print(data_to_dict)
         for row in data_to_dict:
-            pass
+            print(row['dist_name'], "********", row['thana'])
+            dis = District.objects.get(name=row['dist_name'])
+            dis.code = row['dist_code']
+            dis.save()
+
+            # Thana
+            try:
+                thana = Thana.objects.get(district=dis, name=row['thana'])
+                thana.code = row['thana_code']
+                thana.save()
+            except Exception as e:
+                print(e)
         return HttpResponse(f"Data")
 
 
 class UpdateResult(View):
     def get(self, request):
-        data = pd.read_excel(os.path.join(os.getcwd(), "DB/excel/final_pass_list.xlsx")) # noqa
-        data_to_dict = data.to_dict(orient='records')
-        print(data_to_dict)
-        for row in data_to_dict:
-            pass
-        return HttpResponse(f"Data")
+        return render(request, 'upload_excel.html')
+    def post(self, request):
+        if request.method == 'POST' and request.FILES['excel_file']:
+            excel_file = request.FILES['excel_file']
+            
+            # Check if the file is an Excel file
+            if excel_file.name.endswith('.csv'):
+                # data = pd.read_csv(os.path.join(os.getcwd(), excel_file)).fillna(0) # noqa
+                data = pd.read_csv(excel_file).fillna(0) # noqa
+                data_to_dict = data.to_dict(orient='records')
+                match = 0
+                for row in data_to_dict:
+                    match += 1
+                    print(row)
+                    # try:
+                    district = District.objects.get(name=row['district_name'])
+                    exam_name = ExamsName.objects.get(id=row['exam_name'])
+                    reg_count = registration(match)
+                    NTRCACirtificate.objects.get_or_create(
+                        invoice=row['invoice'], exam_name=exam_name, roll=row['roll'],
+                        reg=f"{reg_count}", name=row['name'],
+                        father_name=row['father_name'], mother_name=row['mother_name'],
+                        subject_code=row['subject_code'], subject_name=row['subject_name'],
+                        total_number=row['total_number'], post_code=row['post_code'],
+                        post_name=row['post_name'], institute_type=row['institute_type'],
+                        dob=row['dob'], gender=row['gender'], religion=row['religion'],
+                        written_number=row['written_number'], permanent_district=district,
+                        police_station_name=row['police_station_name'], post_office_name=row['post_office_name'],
+                        permanent_vill=row['permanent_vill'], certificate_marks=row['certificate_marks'],
+                        viva_mark=row['viva_mark'], ssc_result=row['ssc_result'], hsc_result=row['hsc_result']
+                    )
+                    # except Exception as e:
+                    #     print(e)
+                return HttpResponse(f"Match {match} Total {match}")
+            else:
+                return render(request, 'upload_excel.html')

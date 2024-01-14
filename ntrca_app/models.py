@@ -45,7 +45,7 @@ class NTRCACirtificate(models.Model):
     post_code = models.IntegerField(null=True, blank=True)
     post_name = models.CharField(max_length=250, null=True)
     institute_type = models.CharField(max_length=255, null=True)
-    dob = models.DateTimeField(null=True)
+    dob = models.CharField(max_length=255, null=True, blank=True)
     gender = models.PositiveIntegerField(choices=GENDER, null=True)
     nid = models.CharField(max_length=255, null=True, blank=True)
     religion = models.CharField(max_length=50, null=True)
@@ -55,8 +55,10 @@ class NTRCACirtificate(models.Model):
         null=True, related_name='permanent_district')
     permanent_police_station = models.ForeignKey(Thana, on_delete=models.CASCADE,
         null=True, related_name='permanent_thana')
+    police_station_name = models.CharField(max_length=255, null=True, blank=True)
     post_office_name = models.CharField(max_length=255, null=True, blank=True)
     viva_mark = models.IntegerField(null=True, blank=True)
+    certificate_marks = models.IntegerField(null=True, blank=True)
     ssc_result = models.DecimalField(null=True, decimal_places=2, max_digits=5, blank=True)
     hsc_result = models.DecimalField(null=True, decimal_places=2, max_digits=5, blank=True)
 
