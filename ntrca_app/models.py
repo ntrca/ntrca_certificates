@@ -74,15 +74,15 @@ class NTRCACirtificate(models.Model):
         if self.dob:
             date_str = self.dob
             date = date_str.replace(" 00:00:00+00", "")
-            date_format1 = '%Y-%m-%d'
-            date_format2 = '%Y-%m-%d %Y-%m-%d %H:%M:%S%z'
+            date_format1 = '%d-%m-%y'
+            date_format2 = '%Y-%m-%d'
 
             # Convert string to date
             try:
                 date_object = datetime.strptime(date, date_format1)
             except Exception as e:
                 print(e)
-                date_object = datetime.strptime(date_str, date_format2)
+                date_object = datetime.strptime(date, date_format2)
             return date_object
         else:
             return None

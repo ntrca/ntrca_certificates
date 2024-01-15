@@ -103,8 +103,10 @@ class NtrcaInputDistrict(View):
 class NtrcaDistrictDistribution(View):
     def get(self, request, pk):
         exam_name = ExamsName.objects.get(pk=pk)
+        print(exam_name, "*" * 100)
         template_name = 'district_distribution.html'
         all_data = request.session.get('all_data')
+        print(all_data, "*" * 100)
         all_datas = NTRCACirtificate.objects.filter(
             permanent_district__name=all_data, exam_name=exam_name
         )
@@ -114,7 +116,7 @@ class NtrcaDistrictDistribution(View):
                 subject_list.append(data.subject_code)
         dirsrict_data_list = []
         for data in subject_list:
-            obj = NTRCACirtificate.objects.filter(
+            obj = all_datas.filter(
                 subject_code=data,
                 permanent_district__name=all_data
             )

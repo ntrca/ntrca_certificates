@@ -230,7 +230,7 @@
 							<span style="font-family: Gabriola; font-size: 24px;"><b>{{ data.father_name|title }}</b></span> and <span style="font-family: Gabriola; font-size: 24px;"><b>{{ data.mother_name|title }}</b></span>, Date of birth:
 							<span style="font-family: Gabriola; font-size: 24px;"><b>{{ data.dob| date:"d-F-Y" }}</b></span>, Village/Holding: <span style="font-family: Gabriola; font-size: 24px;"><b>{{ data.permanent_vill|title }}</b></span>,
 							Post Office: <span style="font-family: Gabriola; font-size: 24px;"><b>{{ data.permanent_post_office|title }}</b></span>, Upazila/Metropolitan Area:
-							<span style="font-family: Gabriola; font-size: 24px;"><b>{{ data.permanent_police_station|title }}</b></span>, District: <span style="font-family: Gabriola; font-size: 24px;"><b>{{ data.permanent_district|title }}</b></span>, bearing
+							<span style="font-family: Gabriola; font-size: 24px;"><b>{{ data.police_station_name|title }}</b></span>, District: <span style="font-family: Gabriola; font-size: 24px;"><b>{{ data.permanent_district|title }}</b></span>, bearing
 							Roll Number: <span style="font-family: Gabriola; font-size: 28px;"><b>{{ data.roll }}</b></span>
 							has passed {{ data.exam_name.examth }} Teachers' Registration Examination.
 						</p>
@@ -252,9 +252,13 @@
 						<div class="qr">
 							<p style="margin-bottom: 10px; font-size: 14px;">Marks Obtained :</p>
 							<img
-								src="https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl={{ data.exam_name.name }} | Name: {{ data.name }} | Father's Name: {{ data.father_name }} | Mother's Name: {{ data.mother_name }} | Roll: {{ data.roll }} | Reg: 162019{{ data.reg }} | Optional Marks: {{ data.written_number }} | Institution's Type(s): {{ data.institute_type }}"
+								src="https://api.qrserver.com/v1/create-qr-code/?data={{ data.exam_name.name }} | Name: {{ data.name }} | Father's Name: {{ data.father_name }} | Mother's Name: {{ data.mother_name }} | Roll: {{ data.roll }} | Reg: 162019{{ data.reg }} | Optional Marks: {{ data.written_number }} | Institution's Type(s): {{ data.institute_type }}"
 								alt="qrcode"
 							/>
+							<!-- <img
+								src="https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl={{ data.exam_name.name }} | Name: {{ data.name }} | Father's Name: {{ data.father_name }} | Mother's Name: {{ data.mother_name }} | Roll: {{ data.roll }} | Reg: 162019{{ data.reg }} | Optional Marks: {{ data.written_number }} | Institution's Type(s): {{ data.institute_type }}"
+								alt="qrcode"
+							/> -->
 						</div>
 						<div class="tb">
 							<table>
