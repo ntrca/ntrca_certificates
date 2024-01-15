@@ -78,35 +78,31 @@
                     {% for data in thana %}
                     <tr>
                         <th scope="row">{{ forloop.counter }}</th>
-                        <td>{{ data.result.candidate.roll }}</td>
+                        <td>{{ data.roll }}</td>
                         <td>
-                            Name: {{ data.result.candidate.name }}<br>
-                            Father'S Name: {{ data.result.candidate.father }}<br>
-                            Mother'S Name: {{ data.result.candidate.mother }}<br>
+                            Name: {{ data.name }}<br>
+                            Father'S Name: {{ data.father_name }}<br>
+                            Mother'S Name: {{ data.mother_name }}<br>
                         </td>
                         <td>
-                            Vill/Holding: {{ data.result.candidate.permanent_vill }}<br>
-                            P/O: {{ data.result.candidate.permanent_post_office }}<br>
-                            P/S: {{ data.result.candidate.permanent_police_station }}<br>
-                            Dist: {{ data.result.candidate.permanent_district }}<br>
+                            Vill/Holding: {{ data.permanent_vill }}<br>
+                            P/O: {{ data.post_office_name }}<br>
+                            P/S: {{ data.permanent_police_station }}<br>
+                            Dist: {{ data.permanent_district }}<br>
                         </td>
                         <td><img style="width: 50px;" src="/static/photo/{{ data.invoice }}.jpg" alt=""></td>
                         <td>
-                            SSC Result: {{ data.result.candidate.s_result }}<br>
-                            HSC Result: {{ data.result.candidate.h_result }}
+                            SSC Result: {{ data.ssc_result }}<br>
+                            HSC Result: {{ data.hsc_result }}
                         </td>
                         <td>
-                            {{ data.result.candidate.dob| date:"d- F- Y" }}<br>
-                            Written: {{ data.result.candidate.written_number }}<br>
-                            Viva: {{ data.result.v_number }}<br>
+                            {{ data.get_dob }}<br>
+                            Written: {{ data.written_number }}<br>
+                            Viva: {{ data.result.viva_mark }}<br>
                         </td>
                         <td style="padding: 0;">
                             <hr>
-                            {% if data.reg %}
                             162019{{ data.reg }}
-                            {% else %}
-                            {{ data.result.candidate.reg }}
-                            {% endif %}
                         </td>
                         <td></td>
                     </tr>

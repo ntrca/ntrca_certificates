@@ -42,10 +42,10 @@ class UpdateResult(View):
                 match = 0
                 for row in data_to_dict:
                     match += 1
-                    print(row)
+                    print(f"{match} {row}")
                     # try:
                     district = District.objects.get(name=row['district_name'])
-                    exam_name = ExamsName.objects.get(id=row['exam_name'])
+                    exam_name = ExamsName.objects.get(code='002')
                     reg_count = registration(match)
                     NTRCACirtificate.objects.get_or_create(
                         invoice=row['invoice'], exam_name=exam_name, roll=row['roll'],
@@ -57,7 +57,7 @@ class UpdateResult(View):
                         dob=row['dob'], gender=row['gender'], religion=row['religion'],
                         written_number=row['written_number'], permanent_district=district,
                         police_station_name=row['police_station_name'], post_office_name=row['post_office_name'],
-                        permanent_vill=row['permanent_vill'], certificate_marks=row['certificate_marks'],
+                        permanent_vill=row['permanent_vill'],
                         viva_mark=row['viva_mark'], ssc_result=row['ssc_result'], hsc_result=row['hsc_result']
                     )
                     # except Exception as e:
@@ -65,3 +65,8 @@ class UpdateResult(View):
                 return HttpResponse(f"Match {match} Total {match}")
             else:
                 return render(request, 'upload_excel.html')
+
+
+def delete_cer(request):
+    NTRCACirtificate.objects.filter(exam_name__code='002').delete()
+    return HttpResponse("Done")

@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.db import models
 from django.contrib.auth.models import User
 from ntrca_app.utilities import ExamsName, District, Thana, PostOffice
@@ -59,14 +60,33 @@ class NTRCACirtificate(models.Model):
     post_office_name = models.CharField(max_length=255, null=True, blank=True)
     viva_mark = models.IntegerField(null=True, blank=True)
     certificate_marks = models.IntegerField(null=True, blank=True)
-    ssc_result = models.DecimalField(null=True, decimal_places=2, max_digits=5, blank=True)
-    hsc_result = models.DecimalField(null=True, decimal_places=2, max_digits=5, blank=True)
+    ssc_result = models.CharField(max_length=255, null=True, blank=True)
+    hsc_result = models.CharField(max_length=255, null=True, blank=True)
 
     class Meta:
         ordering = ['roll']
 
     def __str__(self):
         return str(self.name)
+    
+    @property
+    def get_dob(self):
+        if self.dob:
+            date_str = self.dob
+            date = date_str.replace(" 00:00:00+00", "")
+            date_format1 = '%Y-%m-%d'
+            date_format2 = '%Y-%m-%d %Y-%m-%d %H:%M:%S%z'
+
+            # Convert string to date
+            try:
+                date_object = datetime.strptime(date, date_format1)
+            except Exception as e:
+                print(e)
+                date_object = datetime.strptime(date_str, date_format2)
+            return date_object
+        else:
+            return None
+
 
     @property
     def get_duplicate_count(self):
