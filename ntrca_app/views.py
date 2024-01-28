@@ -159,7 +159,7 @@ class NTRCACirtificateDownloadView(View):
             qs = NTRCACirtificate.objects.filter(
                 permanent_district__name=all_district,
                 exam_name=exam_name
-            )
+            ).order_by('reg')
 
             paginator = Paginator(qs, 100)
             page_number = request.GET.get('page')
@@ -281,3 +281,17 @@ def update_cirtificate_to_candidate(request):
             post_office = None
         print(obj)
     return HttpResponse("Done")
+
+
+class UpdateRegistration(View):
+    def get(self, request):
+        exam_name = ExamsName.objects.get(code='002')
+        data = NTRCACirtificate.objects.filter(exam_name=exam_name).order_by('permanent_district__code')
+        num = 1
+        for obj in data:
+            reg = registration(num)
+            obj.reg = f"{reg}"
+            obj.save()
+            num+=1
+            print(num)
+        return HttpResponse("success")

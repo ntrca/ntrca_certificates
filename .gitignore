@@ -19,6 +19,7 @@ lib64/
 parts/
 sdist/
 var/
+u-venv/
 wheels/
 ntrca_app/static/media/
 *.egg-info/
