@@ -1,2 +1,8 @@
 venv\scripts\activate
 python manage.py runserver
+1. git pull
+2. git status
+3. git add .
+4. git add -A
+5. git commit -m "test"
+6. git push
