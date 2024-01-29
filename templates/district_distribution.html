@@ -54,7 +54,7 @@
             {% if thana %}
             {% with thana|first as data %}
                 <h5>Non Government Teachers' Registration and Certification Authority (NTRCA)</h5>
-                <h6>Distribution Register ( {{ data.exam_name.examth }} NTRCA exam )</h6>
+                <h6>Distribution Register ( 16 th NTRCA exam )</h6>
                 <p style="font-weight: 600; text-transform: uppercase; font-size: 14px;">{{district}}</p>
                 <p>{{ data.result.candidate.subject_name }}({{ data.subject_code }})</p>
             {% endwith %}
@@ -87,22 +87,22 @@
                         <td>
                             Vill/Holding: {{ data.permanent_vill }}<br>
                             P/O: {{ data.post_office_name }}<br>
-                            P/S: {{ data.police_station_name }}<br>
+                            P/S: {{ data.permanent_police_station }}<br>
                             Dist: {{ data.permanent_district }}<br>
                         </td>
-                        <td><img style="width: 50px;" src="/static/{{ data.exam_name.examth }}/{{ data.invoice }}.jpg" alt="No Image fount"></td>
+                        <td><img style="width: 50px;" src="/static/photo/{{ data.invoice }}.jpg" alt=""></td>
                         <td>
                             SSC Result: {{ data.ssc_result }}<br>
                             HSC Result: {{ data.hsc_result }}
                         </td>
                         <td>
-                            {{ data.get_dob| date:"d-F-Y" }}<br>
+                            {{ data.get_dob }}<br>
                             Written: {{ data.written_number }}<br>
-                            Viva: {{ data.viva_mark }}<br>
+                            Viva: {{ data.result.viva_mark }}<br>
                         </td>
                         <td style="padding: 0;">
                             <hr>
-                            {{ data.exam_name.reg_prefixed }}{{ data.reg }}
+                            162019{{ data.reg }}
                         </td>
                         <td></td>
                     </tr>

@@ -103,10 +103,8 @@ class NtrcaInputDistrict(View):
 class NtrcaDistrictDistribution(View):
     def get(self, request, pk):
         exam_name = ExamsName.objects.get(pk=pk)
-        print(exam_name, "*" * 100)
         template_name = 'district_distribution.html'
         all_data = request.session.get('all_data')
-        print(all_data, "*" * 100)
         all_datas = NTRCACirtificate.objects.filter(
             permanent_district__name=all_data, exam_name=exam_name
         )
@@ -116,7 +114,7 @@ class NtrcaDistrictDistribution(View):
                 subject_list.append(data.subject_code)
         dirsrict_data_list = []
         for data in subject_list:
-            obj = all_datas.filter(
+            obj = NTRCACirtificate.objects.filter(
                 subject_code=data,
                 permanent_district__name=all_data
             )
@@ -159,7 +157,7 @@ class NTRCACirtificateDownloadView(View):
             qs = NTRCACirtificate.objects.filter(
                 permanent_district__name=all_district,
                 exam_name=exam_name
-            )
+            ).order_by('reg')
 
             paginator = Paginator(qs, 100)
             page_number = request.GET.get('page')
@@ -281,3 +279,19 @@ def update_cirtificate_to_candidate(request):
             post_office = None
         print(obj)
     return HttpResponse("Done")
+
+
+
+
+class UpdateRegistration(View):
+    def get(self, request):
+        exam_name = ExamsName.objects.get(code='002')
+        data = NTRCACirtificate.objects.filter(exam_name=exam_name).order_by('permanent_district__code', 'roll')
+        num = 1
+        for obj in data:
+            reg = registration(num)
+            obj.reg = f"{reg}"
+            obj.save()
+            num+=1
+            print(num)
+        return HttpResponse("success")

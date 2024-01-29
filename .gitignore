@@ -25,6 +25,8 @@ ntrca_app/static/media/
 .installed.cfg
 *.egg
 MANIFEST
+static
+/static
 
 # PyInstaller
 #  Usually these files are written by a python script from a template

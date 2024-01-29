@@ -4,7 +4,7 @@ from .views import (
     NtrcaInputDistrict, NTRCACirtificateDownloadView,
     NtrcaSingleData, NtrcaDistrictDistribution, update_data,
     NTRCADuplicateCertificatePrintView, DashboardView,
-    update_result, update_cirtificate_to_candidate
+    update_result, update_cirtificate_to_candidate, UpdateRegistration
 )
 
 urlpatterns = [
@@ -31,5 +31,10 @@ urlpatterns = [
     path('ntrca/single/duplicate/certificate/<int:pk>/', 
         NTRCADuplicateCertificatePrintView.as_view(), 
         name="ntrca_duplicate_certificate"
+    ),
+
+    # Update registration
+    
+    path('UpdateRegistration/', UpdateRegistration.as_view(), name="UpdateRegistration"
     ),
 ]

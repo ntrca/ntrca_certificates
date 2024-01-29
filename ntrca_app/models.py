@@ -73,16 +73,13 @@ class NTRCACirtificate(models.Model):
     def get_dob(self):
         if self.dob:
             date_str = self.dob
+            print(date_str, "*" * 100, type(date_str))
             date = date_str.replace(" 00:00:00+00", "")
             date_format1 = '%d-%m-%y'
-            date_format2 = '%Y-%m-%d'
+            print(date, "*" * 100, type(date))
 
             # Convert string to date
-            try:
-                date_object = datetime.strptime(date, date_format1)
-            except Exception as e:
-                print(e)
-                date_object = datetime.strptime(date, date_format2)
+            date_object = datetime.strptime(date, date_format1)
             return date_object
         else:
             return None

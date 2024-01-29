@@ -40,16 +40,16 @@ class UpdateResult(View):
                 data = pd.read_csv(excel_file).fillna(0) # noqa
                 data_to_dict = data.to_dict(orient='records')
                 match = 0
+                reg_num = 0
+                exam_name = ExamsName.objects.get(code='002')
                 for row in data_to_dict:
                     match += 1
-                    print(f"{match} {row}")
+                    print(f"Count: {match}, {row['invoice']}")
                     # try:
                     district = District.objects.get(name=row['district_name'])
                     exam_name = ExamsName.objects.get(code='002')
-                    reg_count = registration(match)
                     NTRCACirtificate.objects.get_or_create(
                         invoice=row['invoice'], exam_name=exam_name, roll=row['roll'],
-                        reg=f"{reg_count}", name=row['name'],
                         father_name=row['father_name'], mother_name=row['mother_name'],
                         subject_code=row['subject_code'], subject_name=row['subject_name'],
                         total_number=row['total_number'], post_code=row['post_code'],
@@ -57,12 +57,19 @@ class UpdateResult(View):
                         dob=row['dob'], gender=row['gender'], religion=row['religion'],
                         written_number=row['written_number'], permanent_district=district,
                         police_station_name=row['police_station_name'], post_office_name=row['post_office_name'],
-                        permanent_vill=row['permanent_vill'],
+                        permanent_vill=row['permanent_vill'], name=row['name'],
                         viva_mark=row['viva_mark'], ssc_result=row['ssc_result'], hsc_result=row['hsc_result']
                     )
                     # except Exception as e:
                     #     print(e)
-                return HttpResponse(f"Match {match} Total {match}")
+                regs = NTRCACirtificate.objects.filter(exam_name=exam_name).order_by('permanent_district__code', 'roll')
+                for obj in regs:
+                    reg_num += 1
+                    print(f"match: {reg_num} Update reg: {obj.permanent_district.name}")
+                    obj.reg = f"{registration(reg_num)}"
+                    obj.save()
+
+                return HttpResponse(f"Match {match} REG: {reg_num} Total {match + reg_num}")
             else:
                 return render(request, 'upload_excel.html')
 
